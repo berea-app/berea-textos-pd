@@ -12,7 +12,7 @@
       "language": "en",
       "license": "public_domain",
       "license_basis": "Sir Lancelot C. L. Brenton, traducción inglesa de la Septuaginta publicada en 1851. Brenton (m. 1862) cumple vida + 95 desde 1957.",
-      "sha256": "8c09e20dbc651f25d30873b9de8b75e33cd4179ee8ccafe651d0e4b06e6c9ccc",
+      "sha256": "e4bcde039436c42e4d58d0a1c789fce07efecc9459b9c89d3821e57e3978b011",
       "size_bytes": 1265443,
       "source_attribution": "ebible.org · Brenton 1851",
       "source_url": "https://ebible.org/Scriptures/eng-Brenton_usfm.zip"
@@ -29,8 +29,8 @@
       "language": "es",
       "license": "public_domain",
       "license_basis": "Edición de 1909, dominio público en jurisdicciones que aplican vida + 95. Cipriano de Valera (m. 1602) y Casiodoro de Reina (m. 1594) están en PD por edad.",
-      "sha256": "25fe62412aae37daa74b49caf2d1f64e2b2757990d078784691b3dbc05c7744b",
-      "size_bytes": 1340792,
+      "sha256": "aa64bd1ecb25206836d8a40ab585b065a09721392ce9eb792f6591a7ffe8df2c",
+      "size_bytes": 1340796,
       "source_attribution": "ebible.org · Reina-Valera 1909",
       "source_url": "https://ebible.org/Scriptures/spaRV1909_usfm.zip"
     },
@@ -46,8 +46,8 @@
       "language": "grc",
       "license": "public_domain",
       "license_basis": "Textus Receptus griego, dominio público por antigüedad. Anotaciones de manuscritos por Adam Boyd, dedicadas a PD.",
-      "sha256": "d30ef07e4c94f7ec612a2aceedc04c37f93745fc4fa4030c924e69a068b98fc1",
-      "size_bytes": 432472,
+      "sha256": "80644760f40be37ad57888da6674e334b12dac8c2e4cc2367e440bb281278b81",
+      "size_bytes": 432476,
       "source_attribution": "ebible.org · Textus Receptus (Adam Boyd)",
       "source_url": "https://ebible.org/Scriptures/grctr_usfm.zip"
     },
@@ -63,8 +63,8 @@
       "language": "hbo",
       "license": "cc_by_4_0",
       "license_basis": "Texto del WLC en dominio público; morfología y datos OSHB bajo Creative Commons Attribution 4.0 (CC BY 4.0). La atribución se refleja en el manifest y en la pantalla Sobre Berea de la app.",
-      "sha256": "72bfe9c899c08b7f1703bd106b0b4ad3324a6bd86fe150ee42c41066595cf6b2",
-      "size_bytes": 1407855,
+      "sha256": "327f133455e94e105fe1d92d61d3c14dbd530e74c38ab6f5d6c63194d5fb2f75",
+      "size_bytes": 1407859,
       "source_attribution": "Open Scriptures Hebrew Bible v2.2 (CC BY 4.0)",
       "source_url": "https://github.com/openscriptures/morphhb/releases/download/v.2.2/OSHB-v.2.2.zip"
     }
