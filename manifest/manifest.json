@@ -1,0 +1,23 @@
+{
+  "bibles": [
+    {
+      "attribution_required": false,
+      "attribution_text": "Reina-Valera 1909 · dominio público.",
+      "bible_id": "rv1909",
+      "bundled_in_apk": true,
+      "canon_family": "protestant_66",
+      "category": "recomendado",
+      "display_name": "Reina-Valera 1909",
+      "download_url": "https://github.com/berea-app/berea-textos-pd/releases/latest/download/rv1909.bb",
+      "language": "es",
+      "license": "public_domain",
+      "license_basis": "Edición de 1909, dominio público en jurisdicciones que aplican vida + 95. Cipriano de Valera (m. 1602) y Casiodoro de Reina (m. 1594) están en PD por edad.",
+      "sha256": "62d716c77bd0cafae6e3378fa6097b72fb16ddd8a3646b3ccb714a0b5b1e4f19",
+      "size_bytes": 1340761,
+      "source_attribution": "ebible.org · Reina-Valera 1909",
+      "source_url": "https://ebible.org/Scriptures/spaRV1909_usfm.zip"
+    }
+  ],
+  "schema_version": "1.1",
+  "updated_at": "2026-04-28T00:00:00-03:00"
+}

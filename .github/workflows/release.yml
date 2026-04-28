@@ -1,0 +1,51 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -e ".[dev]"
+
+      - name: Build every Bible
+        env:
+          BEREA_FAKE_NOW: "2026-04-28T00:00:00-03:00"
+        run: python -m pipeline.cli build --all
+
+      - name: Verify reproducibility
+        env:
+          BEREA_FAKE_NOW: "2026-04-28T00:00:00-03:00"
+        run: |
+          mkdir -p /tmp/first
+          cp output/*.bb /tmp/first/
+          rm -f output/*.bb
+          python -m pipeline.cli build --all
+          for f in output/*.bb; do
+            name=$(basename "$f")
+            diff <(sha256sum "/tmp/first/$name" | awk '{print $1}') \
+                 <(sha256sum "$f"             | awk '{print $1}')
+          done
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            output/*.bb
+            manifest/manifest.json
+          generate_release_notes: true

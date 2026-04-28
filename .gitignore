@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.coverage
+htmlcov/
+
+# Repo conventions
+# Sources are downloaded on demand, never committed.
+sources/*
+!sources/.gitkeep
+!sources/README.md
+
+# Build artifacts go to GitHub Releases, never committed.
+output/*
+!output/.gitkeep
+!output/README.md
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp

@@ -1,0 +1,28 @@
+{
+  "_comment": "Mapping between Septuagint (LXX) and Masoretic Text (MT) numbering. Each row maps an LXX coordinate to its MT equivalent (or vice-versa). Used by the Berea app to resolve cross-translation references when source uses one system and target uses the other.",
+  "schema_version": "1.0",
+  "updated_at": "2026-04-28T00:00:00-03:00",
+  "psalms": [
+    { "lxx": "psa.9", "mt": "psa.9-10", "note": "LXX Psalm 9 = MT Psalms 9 + 10 merged." },
+    { "lxx": "psa.10", "mt": "psa.11" },
+    { "lxx": "psa.11", "mt": "psa.12" },
+    { "lxx": "psa.112", "mt": "psa.113" },
+    { "lxx": "psa.113", "mt": "psa.114-115", "note": "LXX Psalm 113 = MT Psalms 114 + 115 merged." },
+    { "lxx": "psa.114", "mt": "psa.116:1-9" },
+    { "lxx": "psa.115", "mt": "psa.116:10-19" },
+    { "lxx": "psa.116", "mt": "psa.117" },
+    { "lxx": "psa.117", "mt": "psa.118" },
+    { "lxx": "psa.118", "mt": "psa.119" },
+    { "lxx": "psa.119", "mt": "psa.120" },
+    { "lxx": "psa.146", "mt": "psa.147:1-11", "note": "LXX Psalm 146 = first half of MT Psalm 147." },
+    { "lxx": "psa.147", "mt": "psa.147:12-20", "note": "LXX Psalm 147 = second half of MT Psalm 147." },
+    { "lxx": "psa.151", "mt": null, "note": "LXX-only psalm. Distributed in canon_extendido as ps2." }
+  ],
+  "additions": [
+    { "lxx": "esg", "mt": "est", "note": "Esther additions A-F (esg) are placed inline in LXX Esther; MT has only the 10 chapters of est." },
+    { "lxx": "sus", "mt": null, "note": "Susanna (LXX): chapter 13 in some Daniel editions, separate book in others. Distributed as separate book_id `sus` per canon_extendido." },
+    { "lxx": "bel", "mt": null, "note": "Bel and the Dragon (LXX): chapter 14 in some Daniel editions. Distributed as `bel`." },
+    { "lxx": "s3y", "mt": null, "note": "Prayer of Azariah and Song of the Three Young Men (LXX Daniel 3:24-90). Distributed as `s3y`." },
+    { "lxx": "lje", "mt": null, "note": "Letter of Jeremiah (LXX). Distributed as `lje`." }
+  ]
+}

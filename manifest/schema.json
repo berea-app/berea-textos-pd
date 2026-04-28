@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://berea.app/schemas/manifest-1.1.json",
+  "title": "Berea PD Texts Manifest",
+  "type": "object",
+  "required": ["schema_version", "updated_at", "bibles"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "description": "Manifest schema version. App v1.0 reads >= 1.0."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "bibles": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Bible" }
+    }
+  },
+  "$defs": {
+    "Bible": {
+      "type": "object",
+      "required": [
+        "bible_id",
+        "display_name",
+        "language",
+        "canon_family",
+        "category",
+        "license",
+        "license_basis",
+        "source_url",
+        "source_attribution",
+        "attribution_required",
+        "download_url",
+        "sha256",
+        "size_bytes",
+        "bundled_in_apk"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "bible_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "display_name": { "type": "string" },
+        "language": {
+          "type": "string",
+          "description": "ISO 639-1 or ISO 639-3 code."
+        },
+        "canon_family": {
+          "type": "string",
+          "enum": [
+            "protestant_66",
+            "catholic_73",
+            "orthodox",
+            "septuagint_only",
+            "ms_only"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "enum": ["recomendado", "original"]
+        },
+        "license": {
+          "type": "string",
+          "enum": ["public_domain", "cc_by_4_0", "cc_by_sa_4_0", "other"]
+        },
+        "license_basis": { "type": "string" },
+        "source_url": { "type": "string", "format": "uri" },
+        "source_attribution": { "type": "string" },
+        "attribution_required": { "type": "boolean" },
+        "attribution_text": { "type": "string" },
+        "download_url": { "type": "string", "format": "uri" },
+        "sha256": {
+          "type": "string",
+          "pattern": "^([a-f0-9]{64}|TBD)$"
+        },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "bundled_in_apk": { "type": "boolean" }
+      }
+    }
+  }
+}
