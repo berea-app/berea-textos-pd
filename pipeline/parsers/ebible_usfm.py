@@ -49,6 +49,12 @@ USFM_TO_BOOK_ID: dict[str, str] = {
     "BAR": "bar", "LJE": "lje", "S3Y": "s3y", "SUS": "sus", "BEL": "bel",
     "1MA": "1ma", "2MA": "2ma", "3MA": "3ma", "4MA": "4ma", "MAN": "man",
     "1ES": "1es", "2ES": "2es", "PS2": "ps2", "ODA": "oda", "PSS": "pss",
+    # Brenton's LXX uses ``DAG`` ("Daniel Greek") for the LXX edition of
+    # Daniel that interleaves Susanna, Bel and the Dragon, and the Song of
+    # the Three Young Men. We map it to ``dan``; chapters 13-14 carry the
+    # additions inline (the verifier accepts extra chapters beyond the
+    # canon's expected count).
+    "DAG": "dan",
 }
 
 # Files we always skip (front matter, glossary, peripheral material).
@@ -164,11 +170,22 @@ def _parse_book(usfm_text: str, allowed_book_ids: set[str]) -> Iterable[ParsedVe
             continue
 
         if (m := _RE_VERSE.match(line)):
+            token, body = m.group(1), m.group(2)
+            new_verse_num, new_alias = _verse_number(token)
+            # USFM lets editions split a verse into fragments (``\\v 50``
+            # then ``\\v 50a``). When the integer matches the open verse,
+            # we merge the fragment into the current text instead of
+            # creating a duplicate; the alias records the fragmented form.
+            if cur_verse_num is not None and new_verse_num == cur_verse_num:
+                cur_text.append(body)
+                if new_alias and not cur_verse_alias:
+                    cur_verse_alias = new_alias
+                continue
             v = flush()
             if v is not None:
                 yield v
-            token, body = m.group(1), m.group(2)
-            cur_verse_num, cur_verse_alias = _verse_number(token)
+            cur_verse_num = new_verse_num
+            cur_verse_alias = new_alias
             cur_verse_heading = pending_heading
             pending_heading = None
             cur_text = [body]
@@ -199,11 +216,12 @@ class _EbibleUsfmParser(BibleParser):
     name = "ebible_usfm"
 
     def __init__(self, allowed_book_ids: set[str] | None = None) -> None:
-        # Default: protestant 66.
+        # Default: protestant 66 + extended (deuterocanonical). Per-Bible
+        # filtering is done in ``catalog.py`` via ``CatalogEntry.book_ids``.
         if allowed_book_ids is None:
-            from ..canon import load_canon_66
+            from ..canon import load_full_canon
 
-            allowed_book_ids = {b.book_id for b in load_canon_66()}
+            allowed_book_ids = set(load_full_canon().keys())
         self.allowed_book_ids = allowed_book_ids
 
     def parse(self, source_path: Path) -> Iterable[ParsedVerse]:

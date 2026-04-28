@@ -44,12 +44,12 @@ def _now_iso() -> str:
     return datetime.now(timezone.utc).astimezone().replace(microsecond=0).isoformat()
 
 
-def _load_parser(name: str) -> BibleParser:
+def _load_parser(name: str, allowed_book_ids: set[str]) -> BibleParser:
     module = importlib.import_module(f"pipeline.parsers.{name}")
     cls = getattr(module, "PARSER", None)
     if cls is None:
         raise RuntimeError(f"parser module pipeline.parsers.{name} exposes no PARSER")
-    return cls()
+    return cls(allowed_book_ids=allowed_book_ids)
 
 
 def build_one(bible_id: str) -> tuple[Path, VerifyReport]:
@@ -60,7 +60,7 @@ def build_one(bible_id: str) -> tuple[Path, VerifyReport]:
     source_path = fetch(bible_id, entry.source_url, entry.source_filename)
     source_sha = sha256_of(source_path)
 
-    parser = _load_parser(entry.parser)
+    parser = _load_parser(entry.parser, entry.effective_book_ids())
     verses = list(parser.parse(source_path))
     books = normalize_books(verses)
 
@@ -83,7 +83,7 @@ def build_one(bible_id: str) -> tuple[Path, VerifyReport]:
             books=books,
         )
     )
-    report = verify(out)
+    report = verify(out, expected_canon_complete=entry.expected_canon_complete)
     return out, report
 
 

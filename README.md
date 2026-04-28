@@ -13,6 +13,19 @@ repo, run a single command, and regenerate byte-identical `.bb` files.
 - **Output `.bb` files** distributed via [GitHub Releases](https://github.com/berea-app/berea-textos-pd/releases) of public-domain biblical texts.
 - **Per-text attribution** declared in `manifest/manifest.json`.
 
+## Catalogue (v0.2)
+
+| `bible_id` | Title | Lang | Books | License |
+|---|---|---|---|---|
+| `rv1909` | Reina-Valera 1909 | es | 66 | public domain |
+| `tr` | Textus Receptus (NT) | grc | 27 | public domain |
+| `brenton` | Brenton Septuagint (English) | en | 53 | public domain |
+| `wlc` | Westminster Leningrad Codex (OSHB) | hbo | 39 | CC BY 4.0 |
+
+See [`DECISIONS.md`](DECISIONS.md) for the editorial rationale and
+[`docs/legal_issues_to_open.md`](docs/legal_issues_to_open.md) for the texts
+still pending legal sign-off (SBLGNT, Vulgate Clementina, Rahlfs LXX).
+
 ## What this repo is not
 
 - It does not host raw source archives. Sources are downloaded from the original

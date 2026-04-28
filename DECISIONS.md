@@ -158,6 +158,57 @@ parser y su propio `.bb`. Nunca se mezcla con el original.
 
 ---
 
+## D-010 · Catálogo v0.2: Textus Receptus, Brenton LXX, OSHB Leningrad
+
+**Fecha:** 2026-04-28
+**Contexto:** Después del piloto RV 1909, escalar el catálogo. El Doc 3 sec 4
+listaba SBLGNT/Westcott-Hort/Scrivener/Tregelles/Tischendorf/Nestle 1904 como
+"originales" y OSHB Leningrad / LXX Rahlfs como "originales hebreos/griegos".
+Hay que distinguir lo que está disponible en formato limpio hoy de lo que
+requiere parsers nuevos por fuente.
+**Elegido para v0.2:**
+
+| bible_id | Texto | Fuente | Parser | Estatus |
+|---|---|---|---|---|
+| `tr` | Textus Receptus (NT, griego) | `ebible.org/grctr_usfm.zip` | `ebible_usfm` | PD |
+| `brenton` | Septuaginta de Brenton (1851, inglés) | `ebible.org/eng-Brenton_usfm.zip` | `ebible_usfm` | PD |
+| `wlc` | Westminster Leningrad Codex (OSHB v2.2) | `morphhb v.2.2 release zip` | `oshb_osis` | CC BY 4.0 |
+
+**Justificación de selección:**
+- TR es la fuente histórica del NT griego que respalda RV 1909; juntos cubren
+  el flujo "leer la versión recibida en castellano y consultar el manuscrito
+  griego de base" sin tener que esperar Westcott-Hort.
+- Brenton es la traducción al inglés más usada de la LXX y la única edición
+  PD limpia disponible. Cubre AT + deuterocanónicos en la numeración LXX.
+- OSHB es la fuente académica de facto del AT hebreo: WLC limpio + morfología.
+  La obligación de atribución CC BY 4.0 se cumple en `attribution_text`
+  por entrada y en la pantalla "Sobre Berea" cuando se implemente.
+
+**Lo que queda pendiente (parsers por fuente, levantar issues legales primero):**
+- Westcott-Hort 1881 — fuente: `openscriptures/westcottHort` (TEI XML).
+- Scrivener 1894 — fuente: `byztxt/Scrivener` (BETA / TEI).
+- Tregelles 1879 — fuente: STEPBible TSV.
+- Nestle 1904 — fuente: `biblicalhumanities/Nestle1904` (TEI XML).
+- Tischendorf VIII — fuente: STEPBible TSV.
+- LXX Rahlfs / Swete — fuente legalmente revisable; **Issue 3 abierto**.
+- Vulgata Clementina (Tweedale) — atribución exacta pendiente; **Issue 2 abierto**.
+- Torres Amat 1823 — sólo en archive.org (escaneo OCR); requiere parser de
+  texto plano y revisión manual extensiva.
+- Pratt 1893 — idem archive.org.
+
+**Notas técnicas:**
+- Brenton's USFM tiene fragmentos como `\v 50` + `\v 50a` (versículo extra
+  LXX no presente en MT). El parser `ebible_usfm` los fusiona en un único
+  versículo 50 con texto combinado, en lugar de duplicar la clave.
+- Brenton usa `DAG` ("Daniel Greek") en lugar de `DAN`; lo mapeamos a `dan`
+  con 14 capítulos (Daniel + Susana + Bel inline). El verifier acepta
+  capítulos extra más allá del conteo canónico de 12.
+- WLC usa numeración MT en Joel (4 caps vs 3 cristianos) y Malaquías (3 vs
+  4). Se distribuye tal cual; la alineación cross-translation entre WLC y
+  RV se gestiona con `verse_alias_lxx.json` en versiones futuras.
+
+---
+
 ## D-009 · Versionado
 
 **Fecha:** 2026-04-28
