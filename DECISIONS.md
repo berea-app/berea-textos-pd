@@ -158,6 +158,56 @@ parser y su propio `.bb`. Nunca se mezcla con el original.
 
 ---
 
+## D-011 · Catálogo v0.3: Nestle 1904, Westcott-Hort, Tregelles
+
+**Fecha:** 2026-04-29
+**Contexto:** Después de v0.2 quedaban pendientes los críticos NT del s. XIX:
+WH 1881, Tregelles 1879, Tischendorf VIII, Nestle 1904. Las fuentes limpias
+no son ebible.org sino dos repos académicos:
+
+| Texto | Fuente | Formato | Licencia |
+|---|---|---|---|
+| Nestle 1904 | `biblicalhumanities/Nestle1904` (CSV) | TSV con BCV inglés | PD por antigüedad |
+| Westcott-Hort 1881 | STEPBible TAGNT | TSV multi-edición | CC BY 4.0 |
+| Tregelles 1879+Jongkind | STEPBible TAGNT | TSV multi-edición | CC BY 4.0 |
+| Tischendorf VIII | sin fuente PD limpia identificada | — | pendiente |
+
+**Elegido:**
+
+- **`nestle1904`**: parser propio `nestle1904_tsv` que consume el CSV
+  (BCV en formato "Matt 1:1") y emite ParsedVerse por versículo.
+- **`wh` y `tregelles`**: parser propio `stepbible_tagnt` que filtra
+  el corpus TAGNT por `edition` (config del parser). Una sola implementación
+  produce dos Biblias.
+- **Tischendorf VIII**: aplazado. No hay fuente PD limpia en formato
+  parseable; lo más cercano es archive.org OCR del libro de 1872.
+
+**Justificación técnica de elegir TAGNT sobre `byztxt/greektext-westcott-hort`:**
+El repo byztxt usa codificación BetaCode (no Unicode), agrega `\h`/`/`/`(` etc
+y necesita un convertidor BetaCode → Unicode con varias variantes históricas.
+TAGNT viene en Unicode directo, con texto-crítico canónico revisado por
+Tyndale House. Trade-off: aceptamos CC BY 4.0 (en lugar de PD estricto) a
+cambio de calidad textual y simplicidad de parser.
+
+**Manejo de variantes en TAGNT:**
+1. Columna `editions` (5): qué ediciones contienen ESA palabra exacta.
+2. Columna `meaning variants` (6): palabras alternativas que otras ediciones
+   usan en lugar de la principal (ej. WH dice "ἁγίων" donde TR dice "ὑμῶν").
+3. Columna `spelling variants` (7): variantes ortográficas (ej. WH dice
+   "Δαυεὶδ", Tregelles "Δαυὶδ", TR "Δαβὶδ").
+
+El parser maneja las tres y produce ediciones críticas accuratas:
+- WH Mc 1:1 omite "υἱοῦ θεοῦ" (lectura de א*).
+- WH y Tregelles omiten el Comma Johanneum (1 Jn 5:7-8) — sólo TR lo conserva.
+- WH Rev 22:21 termina en "ἁγίων", Tregelles en "ἁγίων" sin "Χριστοῦ".
+
+**Atribución obligatoria CC BY 4.0:**
+- `wh.bb` y `tregelles.bb` declaran `attribution_required: true`.
+- `attribution_text` cita STEPBible/Tyndale House.
+- La pantalla "Sobre Berea" de la app debe exhibir esta atribución.
+
+---
+
 ## D-010 · Catálogo v0.2: Textus Receptus, Brenton LXX, OSHB Leningrad
 
 **Fecha:** 2026-04-28

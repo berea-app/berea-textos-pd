@@ -12,10 +12,27 @@
       "language": "en",
       "license": "public_domain",
       "license_basis": "Sir Lancelot C. L. Brenton, traducción inglesa de la Septuaginta publicada en 1851. Brenton (m. 1862) cumple vida + 95 desde 1957.",
-      "sha256": "e4bcde039436c42e4d58d0a1c789fce07efecc9459b9c89d3821e57e3978b011",
+      "sha256": "c3cdd27268f18198fe8c34351fd233fd013c898b1e7afa240c8c0489270be84a",
       "size_bytes": 1265443,
       "source_attribution": "ebible.org · Brenton 1851",
       "source_url": "https://ebible.org/Scriptures/eng-Brenton_usfm.zip"
+    },
+    {
+      "attribution_required": false,
+      "attribution_text": "Nestle 1904 · dominio público.",
+      "bible_id": "nestle1904",
+      "bundled_in_apk": false,
+      "canon_family": "ms_only",
+      "category": "original",
+      "display_name": "Nestle 1904 (NT)",
+      "download_url": "https://github.com/berea-app/berea-textos-pd/releases/latest/download/nestle1904.bb",
+      "language": "grc",
+      "license": "public_domain",
+      "license_basis": "Eberhard Nestle (m. 1913) — la edición de 1904 cumple vida + 95 desde 2008. La curaduría morfológica de biblicalhumanities/Nestle1904 está bajo licencia abierta; Berea sólo distribuye el texto griego desnudo.",
+      "sha256": "ad8a9ab35a3683b48c5d4d6b74a6603d1ab590081c0f90a36d0c9dd2d461059f",
+      "size_bytes": 425885,
+      "source_attribution": "biblicalhumanities · Nestle 1904",
+      "source_url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/morph/Nestle1904.csv"
     },
     {
       "attribution_required": false,
@@ -29,8 +46,8 @@
       "language": "es",
       "license": "public_domain",
       "license_basis": "Edición de 1909, dominio público en jurisdicciones que aplican vida + 95. Cipriano de Valera (m. 1602) y Casiodoro de Reina (m. 1594) están en PD por edad.",
-      "sha256": "aa64bd1ecb25206836d8a40ab585b065a09721392ce9eb792f6591a7ffe8df2c",
-      "size_bytes": 1340796,
+      "sha256": "337c59996633a96921b59d8f45a4fa0883856fa2644b30cec8f8e0e6d837e3f8",
+      "size_bytes": 1340792,
       "source_attribution": "ebible.org · Reina-Valera 1909",
       "source_url": "https://ebible.org/Scriptures/spaRV1909_usfm.zip"
     },
@@ -46,10 +63,44 @@
       "language": "grc",
       "license": "public_domain",
       "license_basis": "Textus Receptus griego, dominio público por antigüedad. Anotaciones de manuscritos por Adam Boyd, dedicadas a PD.",
-      "sha256": "80644760f40be37ad57888da6674e334b12dac8c2e4cc2367e440bb281278b81",
-      "size_bytes": 432476,
+      "sha256": "6e70681e2f49a9d3e7277d652998647797c00e289644aefe945e6b723b90c5d1",
+      "size_bytes": 432475,
       "source_attribution": "ebible.org · Textus Receptus (Adam Boyd)",
       "source_url": "https://ebible.org/Scriptures/grctr_usfm.zip"
+    },
+    {
+      "attribution_required": true,
+      "attribution_text": "Tregelles 1879 (NT, ed. Jongkind 2009) extraído del corpus TAGNT de STEPBible.org / Tyndale House Cambridge, distribuido bajo Creative Commons Attribution 4.0. github.com/STEPBible",
+      "bible_id": "tregelles",
+      "bundled_in_apk": false,
+      "canon_family": "ms_only",
+      "category": "original",
+      "display_name": "Tregelles 1879 (NT, ed. Jongkind)",
+      "download_url": "https://github.com/berea-app/berea-textos-pd/releases/latest/download/tregelles.bb",
+      "language": "grc",
+      "license": "cc_by_4_0",
+      "license_basis": "Texto base: Tregelles 1879 (vida + 95 desde 1970), edición completada por Jongkind 2009. Distribución vía STEPBible/Tyndale House bajo CC BY 4.0; atribución obligatoria.",
+      "sha256": "aae4d996d03ce4221b9bb33aa99e9267c5edc32b936be2ed0c740bdf05b0e852",
+      "size_bytes": 423070,
+      "source_attribution": "STEPBible.org / Tyndale House Cambridge — TAGNT (CC BY 4.0)",
+      "source_url": "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/Translators%20Amalgamated%20OT%2BNT/TAGNT%20Mat-Jhn%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20STEPBible.org%20CC-BY.txt"
+    },
+    {
+      "attribution_required": true,
+      "attribution_text": "Westcott-Hort 1881 (NT) extraído del corpus TAGNT de STEPBible.org / Tyndale House Cambridge, distribuido bajo Creative Commons Attribution 4.0. github.com/STEPBible",
+      "bible_id": "wh",
+      "bundled_in_apk": false,
+      "canon_family": "ms_only",
+      "category": "original",
+      "display_name": "Westcott-Hort 1881 (NT)",
+      "download_url": "https://github.com/berea-app/berea-textos-pd/releases/latest/download/wh.bb",
+      "language": "grc",
+      "license": "cc_by_4_0",
+      "license_basis": "Texto base: Westcott + Hort 1881 (vida + 95 desde 1996). Distribuido por STEPBible/Tyndale House con licencia Creative Commons Attribution 4.0; la atribución a STEPBible es obligatoria.",
+      "sha256": "ad5ff32e360435f93f8154542e944650136b82f80bb96d1506a753ede6851334",
+      "size_bytes": 423032,
+      "source_attribution": "STEPBible.org / Tyndale House Cambridge — TAGNT (CC BY 4.0)",
+      "source_url": "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/Translators%20Amalgamated%20OT%2BNT/TAGNT%20Mat-Jhn%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20STEPBible.org%20CC-BY.txt"
     },
     {
       "attribution_required": true,
@@ -63,12 +114,12 @@
       "language": "hbo",
       "license": "cc_by_4_0",
       "license_basis": "Texto del WLC en dominio público; morfología y datos OSHB bajo Creative Commons Attribution 4.0 (CC BY 4.0). La atribución se refleja en el manifest y en la pantalla Sobre Berea de la app.",
-      "sha256": "327f133455e94e105fe1d92d61d3c14dbd530e74c38ab6f5d6c63194d5fb2f75",
-      "size_bytes": 1407859,
+      "sha256": "ac46c0b32a90ff7171fd155f03e58b025c6d7f09810b1129087baa52d270d3bb",
+      "size_bytes": 1407856,
       "source_attribution": "Open Scriptures Hebrew Bible v2.2 (CC BY 4.0)",
       "source_url": "https://github.com/openscriptures/morphhb/releases/download/v.2.2/OSHB-v.2.2.zip"
     }
   ],
   "schema_version": "1.1",
-  "updated_at": "2026-04-28T00:00:00-03:00"
+  "updated_at": "2026-04-29T00:00:00-03:00"
 }

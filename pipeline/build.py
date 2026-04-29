@@ -44,12 +44,20 @@ def _now_iso() -> str:
     return datetime.now(timezone.utc).astimezone().replace(microsecond=0).isoformat()
 
 
-def _load_parser(name: str, allowed_book_ids: set[str]) -> BibleParser:
+def _load_parser(
+    name: str,
+    allowed_book_ids: set[str],
+    parser_config: dict[str, str],
+) -> BibleParser:
     module = importlib.import_module(f"pipeline.parsers.{name}")
     cls = getattr(module, "PARSER", None)
     if cls is None:
         raise RuntimeError(f"parser module pipeline.parsers.{name} exposes no PARSER")
-    return cls(allowed_book_ids=allowed_book_ids)
+    try:
+        return cls(allowed_book_ids=allowed_book_ids, **parser_config)
+    except TypeError:
+        # Parsers that don't accept extra kwargs.
+        return cls(allowed_book_ids=allowed_book_ids)
 
 
 def build_one(bible_id: str) -> tuple[Path, VerifyReport]:
@@ -58,9 +66,12 @@ def build_one(bible_id: str) -> tuple[Path, VerifyReport]:
     entry: CatalogEntry = CATALOG[bible_id]
 
     source_path = fetch(bible_id, entry.source_url, entry.source_filename)
+    for extra_url, extra_filename in entry.extra_sources:
+        fetch(bible_id, extra_url, extra_filename)
     source_sha = sha256_of(source_path)
 
-    parser = _load_parser(entry.parser, entry.effective_book_ids())
+    parser_config = dict(entry.parser_config)
+    parser = _load_parser(entry.parser, entry.effective_book_ids(), parser_config)
     verses = list(parser.parse(source_path))
     books = normalize_books(verses)
 

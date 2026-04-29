@@ -63,6 +63,14 @@ class CatalogEntry:
     # vs RV's Joel 3, Malachi 3 vs RV's Malachi 4) or that ship the LXX
     # additions inline.
     expected_canon_complete: bool = True
+    # Additional files that must be downloaded alongside ``source_url``
+    # before the parser runs. Parsers that consume directories (e.g.,
+    # STEPBible TAGNT split into two files) read every entry from the
+    # bible's sources directory.
+    extra_sources: tuple[tuple[str, str], ...] = field(default_factory=tuple)
+    # Parser-specific configuration. Forwarded to the parser ``__init__``
+    # via the ``parser_config`` keyword.
+    parser_config: tuple[tuple[str, str], ...] = field(default_factory=tuple)
 
     def effective_book_ids(self) -> set[str]:
         if self.book_ids:
@@ -132,6 +140,116 @@ CATALOG: dict[str, CatalogEntry] = {
         bundled_in_apk=False,
         book_ids=_BRENTON_BOOK_IDS,
         expected_canon_complete=False,
+    ),
+    "nestle1904": CatalogEntry(
+        bible_id="nestle1904",
+        display_name="Nestle 1904 (NT)",
+        language="grc",
+        canon_family="ms_only",
+        category="original",
+        license="public_domain",
+        license_basis=(
+            "Eberhard Nestle (m. 1913) — la edición de 1904 cumple "
+            "vida + 95 desde 2008. La curaduría morfológica de "
+            "biblicalhumanities/Nestle1904 está bajo licencia abierta; "
+            "Berea sólo distribuye el texto griego desnudo."
+        ),
+        source_url=(
+            "https://raw.githubusercontent.com/biblicalhumanities/"
+            "Nestle1904/master/morph/Nestle1904.csv"
+        ),
+        source_attribution="biblicalhumanities · Nestle 1904",
+        attribution_required=False,
+        attribution_text="Nestle 1904 · dominio público.",
+        parser="nestle1904_tsv",
+        source_filename="Nestle1904.csv",
+        bundled_in_apk=False,
+        book_ids=_NT_BOOK_IDS,
+    ),
+    "wh": CatalogEntry(
+        bible_id="wh",
+        display_name="Westcott-Hort 1881 (NT)",
+        language="grc",
+        canon_family="ms_only",
+        category="original",
+        license="cc_by_4_0",
+        license_basis=(
+            "Texto base: Westcott + Hort 1881 (vida + 95 desde 1996). "
+            "Distribuido por STEPBible/Tyndale House con licencia "
+            "Creative Commons Attribution 4.0; la atribución a STEPBible "
+            "es obligatoria."
+        ),
+        source_url=(
+            "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/"
+            "Translators%20Amalgamated%20OT%2BNT/"
+            "TAGNT%20Mat-Jhn%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20"
+            "STEPBible.org%20CC-BY.txt"
+        ),
+        source_attribution=(
+            "STEPBible.org / Tyndale House Cambridge — TAGNT (CC BY 4.0)"
+        ),
+        attribution_required=True,
+        attribution_text=(
+            "Westcott-Hort 1881 (NT) extraído del corpus TAGNT de "
+            "STEPBible.org / Tyndale House Cambridge, distribuido bajo "
+            "Creative Commons Attribution 4.0. github.com/STEPBible"
+        ),
+        parser="stepbible_tagnt",
+        source_filename="TAGNT_Mat-Jhn.txt",
+        bundled_in_apk=False,
+        book_ids=_NT_BOOK_IDS,
+        extra_sources=(
+            (
+                "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/"
+                "Translators%20Amalgamated%20OT%2BNT/"
+                "TAGNT%20Act-Rev%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20"
+                "STEPBible.org%20CC-BY.txt",
+                "TAGNT_Act-Rev.txt",
+            ),
+        ),
+        parser_config=(("edition", "WH"),),
+    ),
+    "tregelles": CatalogEntry(
+        bible_id="tregelles",
+        display_name="Tregelles 1879 (NT, ed. Jongkind)",
+        language="grc",
+        canon_family="ms_only",
+        category="original",
+        license="cc_by_4_0",
+        license_basis=(
+            "Texto base: Tregelles 1879 (vida + 95 desde 1970), edición "
+            "completada por Jongkind 2009. Distribución vía STEPBible/"
+            "Tyndale House bajo CC BY 4.0; atribución obligatoria."
+        ),
+        source_url=(
+            "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/"
+            "Translators%20Amalgamated%20OT%2BNT/"
+            "TAGNT%20Mat-Jhn%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20"
+            "STEPBible.org%20CC-BY.txt"
+        ),
+        source_attribution=(
+            "STEPBible.org / Tyndale House Cambridge — TAGNT (CC BY 4.0)"
+        ),
+        attribution_required=True,
+        attribution_text=(
+            "Tregelles 1879 (NT, ed. Jongkind 2009) extraído del corpus "
+            "TAGNT de STEPBible.org / Tyndale House Cambridge, distribuido "
+            "bajo Creative Commons Attribution 4.0. github.com/STEPBible"
+        ),
+        parser="stepbible_tagnt",
+        source_filename="TAGNT_Mat-Jhn.txt",
+        bundled_in_apk=False,
+        book_ids=_NT_BOOK_IDS,
+        extra_sources=(
+            (
+                "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/"
+                "Translators%20Amalgamated%20OT%2BNT/"
+                "TAGNT%20Act-Rev%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20"
+                "STEPBible.org%20CC-BY.txt",
+                "TAGNT_Act-Rev.txt",
+            ),
+        ),
+        parser_config=(("edition", "Treg"),),
     ),
     "wlc": CatalogEntry(
         bible_id="wlc",

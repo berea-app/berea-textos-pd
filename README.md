@@ -13,12 +13,15 @@ repo, run a single command, and regenerate byte-identical `.bb` files.
 - **Output `.bb` files** distributed via [GitHub Releases](https://github.com/berea-app/berea-textos-pd/releases) of public-domain biblical texts.
 - **Per-text attribution** declared in `manifest/manifest.json`.
 
-## Catalogue (v0.2)
+## Catalogue (v0.3)
 
 | `bible_id` | Title | Lang | Books | License |
 |---|---|---|---|---|
 | `rv1909` | Reina-Valera 1909 | es | 66 | public domain |
 | `tr` | Textus Receptus (NT) | grc | 27 | public domain |
+| `nestle1904` | Nestle 1904 (NT) | grc | 27 | public domain |
+| `wh` | Westcott-Hort 1881 (NT) | grc | 27 | CC BY 4.0 (STEPBible) |
+| `tregelles` | Tregelles 1879 (NT, Jongkind) | grc | 27 | CC BY 4.0 (STEPBible) |
 | `brenton` | Brenton Septuagint (English) | en | 53 | public domain |
 | `wlc` | Westminster Leningrad Codex (OSHB) | hbo | 39 | CC BY 4.0 |
 
