@@ -12,8 +12,8 @@
       "language": "en",
       "license": "public_domain",
       "license_basis": "Sir Lancelot C. L. Brenton, traducción inglesa de la Septuaginta publicada en 1851. Brenton (m. 1862) cumple vida + 95 desde 1957.",
-      "sha256": "c3cdd27268f18198fe8c34351fd233fd013c898b1e7afa240c8c0489270be84a",
-      "size_bytes": 1265443,
+      "sha256": "1afec2b23c09d841475642c1fd887eed451287d4f8f952816804308e62545d03",
+      "size_bytes": 1265444,
       "source_attribution": "ebible.org · Brenton 1851",
       "source_url": "https://ebible.org/Scriptures/eng-Brenton_usfm.zip"
     },
@@ -29,8 +29,8 @@
       "language": "grc",
       "license": "public_domain",
       "license_basis": "Eberhard Nestle (m. 1913) — la edición de 1904 cumple vida + 95 desde 2008. La curaduría morfológica de biblicalhumanities/Nestle1904 está bajo licencia abierta; Berea sólo distribuye el texto griego desnudo.",
-      "sha256": "ad8a9ab35a3683b48c5d4d6b74a6603d1ab590081c0f90a36d0c9dd2d461059f",
-      "size_bytes": 425885,
+      "sha256": "dd2a741b2ed8773e759965c4917a668ca49e287f977a58235cf2c46f97a5b7e8",
+      "size_bytes": 425886,
       "source_attribution": "biblicalhumanities · Nestle 1904",
       "source_url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/morph/Nestle1904.csv"
     },
@@ -46,8 +46,8 @@
       "language": "es",
       "license": "public_domain",
       "license_basis": "Edición de 1909, dominio público en jurisdicciones que aplican vida + 95. Cipriano de Valera (m. 1602) y Casiodoro de Reina (m. 1594) están en PD por edad.",
-      "sha256": "337c59996633a96921b59d8f45a4fa0883856fa2644b30cec8f8e0e6d837e3f8",
-      "size_bytes": 1340792,
+      "sha256": "a04c1c1a18a16c627bf776ab64ebdc97845c45f8200fb19fb82616a4a3049e3f",
+      "size_bytes": 1340796,
       "source_attribution": "ebible.org · Reina-Valera 1909",
       "source_url": "https://ebible.org/Scriptures/spaRV1909_usfm.zip"
     },
@@ -63,8 +63,8 @@
       "language": "grc",
       "license": "public_domain",
       "license_basis": "Textus Receptus griego, dominio público por antigüedad. Anotaciones de manuscritos por Adam Boyd, dedicadas a PD.",
-      "sha256": "6e70681e2f49a9d3e7277d652998647797c00e289644aefe945e6b723b90c5d1",
-      "size_bytes": 432475,
+      "sha256": "cf6a62c82b60956fda27897868db5a1e37d20a80f9174afbf302b4c04da5a4f3",
+      "size_bytes": 432479,
       "source_attribution": "ebible.org · Textus Receptus (Adam Boyd)",
       "source_url": "https://ebible.org/Scriptures/grctr_usfm.zip"
     },
@@ -80,8 +80,8 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Texto base: Tregelles 1879 (vida + 95 desde 1970), edición completada por Jongkind 2009. Distribución vía STEPBible/Tyndale House bajo CC BY 4.0; atribución obligatoria.",
-      "sha256": "aae4d996d03ce4221b9bb33aa99e9267c5edc32b936be2ed0c740bdf05b0e852",
-      "size_bytes": 423070,
+      "sha256": "711e961645f351fa7a8d591c9b5fc33146792249a4dadd856c01aa10cce0a5bc",
+      "size_bytes": 423071,
       "source_attribution": "STEPBible.org / Tyndale House Cambridge — TAGNT (CC BY 4.0)",
       "source_url": "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/Translators%20Amalgamated%20OT%2BNT/TAGNT%20Mat-Jhn%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20STEPBible.org%20CC-BY.txt"
     },
@@ -97,8 +97,8 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Texto base: Westcott + Hort 1881 (vida + 95 desde 1996). Distribuido por STEPBible/Tyndale House con licencia Creative Commons Attribution 4.0; la atribución a STEPBible es obligatoria.",
-      "sha256": "ad5ff32e360435f93f8154542e944650136b82f80bb96d1506a753ede6851334",
-      "size_bytes": 423032,
+      "sha256": "1b624166a088e90abcdb18348bc500bf94f12aa1e235f8e11f8499eaf9f8e35c",
+      "size_bytes": 423033,
       "source_attribution": "STEPBible.org / Tyndale House Cambridge — TAGNT (CC BY 4.0)",
       "source_url": "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/Translators%20Amalgamated%20OT%2BNT/TAGNT%20Mat-Jhn%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20STEPBible.org%20CC-BY.txt"
     },
@@ -114,8 +114,8 @@
       "language": "hbo",
       "license": "cc_by_4_0",
       "license_basis": "Texto del WLC en dominio público; morfología y datos OSHB bajo Creative Commons Attribution 4.0 (CC BY 4.0). La atribución se refleja en el manifest y en la pantalla Sobre Berea de la app.",
-      "sha256": "ac46c0b32a90ff7171fd155f03e58b025c6d7f09810b1129087baa52d270d3bb",
-      "size_bytes": 1407856,
+      "sha256": "840b204954224bc1fec64991cee966582a068818c77bd6724847fea9f1652fc8",
+      "size_bytes": 1407858,
       "source_attribution": "Open Scriptures Hebrew Bible v2.2 (CC BY 4.0)",
       "source_url": "https://github.com/openscriptures/morphhb/releases/download/v.2.2/OSHB-v.2.2.zip"
     }
