@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://berea.app/schemas/numbering_alias-1.0.json",
+  "title": "Berea Numbering Alias",
+  "description": "Cross-tradition chapter and verse aliasing between Bible numbering schemes (MT vs LXX/Vulgata).",
+  "type": "object",
+  "required": ["schema_version", "schemes", "chapter_aliases", "split_or_merge"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "description": { "type": "string" },
+    "schemes": {
+      "type": "object",
+      "description": "Map of scheme_id (snake_case) to a human-readable description.",
+      "additionalProperties": { "type": "string" }
+    },
+    "chapter_aliases": {
+      "type": "array",
+      "description": "Pairs of chapters that refer to the same body of text in different schemes. Excludes split/merge cases (those are in split_or_merge).",
+      "items": { "$ref": "#/$defs/ChapterAlias" }
+    },
+    "split_or_merge": {
+      "type": "array",
+      "description": "Chapter-level structural divergences where one tradition merges or splits a passage that the other publishes differently.",
+      "items": { "$ref": "#/$defs/SplitOrMerge" }
+    }
+  },
+  "$defs": {
+    "ChapterAlias": {
+      "type": "object",
+      "required": ["book", "mt", "vulgata"],
+      "additionalProperties": false,
+      "properties": {
+        "book": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+$",
+          "description": "USFM 3.0 lowercase book id."
+        },
+        "mt": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Chapter number in the MT-numbered editions."
+        },
+        "vulgata": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Chapter number in the LXX/Vulgata-numbered editions."
+        },
+        "note": { "type": "string" }
+      }
+    },
+    "SplitOrMerge": {
+      "type": "object",
+      "required": ["book", "mt_chapters", "vulgata_chapters", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "book": { "type": "string", "pattern": "^[a-z0-9]+$" },
+        "mt_chapters": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1 },
+          "minItems": 1
+        },
+        "vulgata_chapters": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1 },
+          "minItems": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": ["merged_in_vulgata", "split_in_vulgata"],
+          "description": "merged_in_vulgata: multiple MT chapters become one Vulgata chapter. split_in_vulgata: one MT chapter becomes multiple Vulgata chapters."
+        },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

@@ -12,7 +12,8 @@
       "language": "en",
       "license": "public_domain",
       "license_basis": "American Standard Version, publicada en 1901 (pre-1929 en EEUU y vida + 95 cumplido para todos los miembros del comité traductor). Distribución por ebible.org como dominio público.",
-      "sha256": "3103a372ff84a02a392222d621331a9b990118ebf9bb312d610f5b0acfe99b56",
+      "numbering_scheme": "mt",
+      "sha256": "7da122e7800fbba615a96abedd47678119f7f108bd5940ef2b8b882580a29aa1",
       "size_bytes": 1312314,
       "source_attribution": "ebible.org · American Standard Version 1901",
       "source_url": "https://ebible.org/Scriptures/eng-asv_usfm.zip"
@@ -29,7 +30,8 @@
       "language": "en",
       "license": "public_domain",
       "license_basis": "Sir Lancelot C. L. Brenton, traducción inglesa de la Septuaginta publicada en 1851. Brenton (m. 1862) cumple vida + 95 desde 1957.",
-      "sha256": "bc3dead0c602437a826433d218b84431367824d4f177b933918c67afad59b677",
+      "numbering_scheme": "vulgata",
+      "sha256": "54bbe374eba5ee1be4c9ed99e695fe13b25538522fab93f6e2bbe6ae8b6774b9",
       "size_bytes": 1265442,
       "source_attribution": "ebible.org · Brenton 1851",
       "source_url": "https://ebible.org/Scriptures/eng-Brenton_usfm.zip"
@@ -46,8 +48,9 @@
       "language": "en",
       "license": "public_domain",
       "license_basis": "Darby Bible (1890). John Nelson Darby (m. 1882) cumple vida + 95 desde 1977. Distribución por ebible.org como dominio público.",
-      "sha256": "9b02039b9f48a665e305c9b94adc89d1b1b7646b041997e46eab1eefee24a238",
-      "size_bytes": 1321006,
+      "numbering_scheme": "mt",
+      "sha256": "79949b9ccb9ee556d4155b687fe350a27f7d382158e56a4a229056aa154b7726",
+      "size_bytes": 1321005,
       "source_attribution": "ebible.org · Darby Translation",
       "source_url": "https://ebible.org/Scriptures/engDBY_usfm.zip"
     },
@@ -63,8 +66,9 @@
       "language": "en",
       "license": "public_domain",
       "license_basis": "Douay-Rheims American Edition 1899, basada en la revisión de Richard Challoner (m. 1781) sobre el original de 1582-1610. Cumple vida + 95 desde 1876. Distribución por ebible.org como dominio público.",
-      "sha256": "1599e5f640e9527191558c40b93efaaf7bb197300795d17417d2e5e273334ffd",
-      "size_bytes": 1518398,
+      "numbering_scheme": "vulgata",
+      "sha256": "86befb58f4f14f3028c8bc9011718e58a57e0c5817d300b08d113ad2909a1bb9",
+      "size_bytes": 1518401,
       "source_attribution": "ebible.org · Douay-Rheims American Edition 1899",
       "source_url": "https://ebible.org/Scriptures/engDRA_usfm.zip"
     },
@@ -80,8 +84,9 @@
       "language": "en",
       "license": "public_domain",
       "license_basis": "King James Version, texto estandarizado de 1769, con Apócrifa. Dominio público por antigüedad fuera del Reino Unido. Dentro del UK, las Letters Patent del Crown reservan la impresión a Cambridge / Oxford / Collins; la distribución digital global no se considera afectada en la práctica. Berea distribuye el texto sin modificar.",
-      "sha256": "070c7f457ec10750cac35db6435887a28e70fe93bbd3c40a9ebf355ff9c14fbd",
-      "size_bytes": 1582341,
+      "numbering_scheme": "mt",
+      "sha256": "d0d5645a6cb812b197167b03c594bd7cd6d19335f2aacc5d29bf72af2f29cbd4",
+      "size_bytes": 1582339,
       "source_attribution": "ebible.org · King James Version 1769 + Apocrypha",
       "source_url": "https://ebible.org/Scriptures/eng-kjv_usfm.zip"
     },
@@ -97,8 +102,8 @@
       "language": "grc",
       "license": "public_domain",
       "license_basis": "Eberhard Nestle (m. 1913) — la edición de 1904 cumple vida + 95 desde 2008. La curaduría morfológica de biblicalhumanities/Nestle1904 está bajo licencia abierta; Berea sólo distribuye el texto griego desnudo.",
-      "sha256": "46d821cce8d02ddc7f010b632f1b9103dbe1cacd0eb3b3ef92ded8071717ee10",
-      "size_bytes": 425884,
+      "sha256": "c5ff43d509ef789c9dca2f305d9afb49471872033290b6ba23aed2f2959cbb2b",
+      "size_bytes": 425886,
       "source_attribution": "biblicalhumanities · Nestle 1904",
       "source_url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/morph/Nestle1904.csv"
     },
@@ -114,8 +119,9 @@
       "language": "es",
       "license": "public_domain",
       "license_basis": "Edición de 1909, dominio público en jurisdicciones que aplican vida + 95. Cipriano de Valera (m. 1602) y Casiodoro de Reina (m. 1594) están en PD por edad.",
-      "sha256": "fd98711d9de0a619f4a3179d083861917e44ec8e0c52c22ade5e5efb58ad5bda",
-      "size_bytes": 1340739,
+      "numbering_scheme": "mt",
+      "sha256": "a602a7fdb76efdee497e264343e3bc5a4efbf51a9b207e67788a019c2bc18adc",
+      "size_bytes": 1340738,
       "source_attribution": "ebible.org · Reina-Valera 1909",
       "source_url": "https://ebible.org/Scriptures/spaRV1909_usfm.zip"
     },
@@ -131,8 +137,9 @@
       "language": "es",
       "license": "public_domain",
       "license_basis": "Sagrada Biblia traducida de la Vulgata Latina al español por Félix Torres Amat (1823). Torres Amat (m. 1847) cumple vida + 95 desde 1942. Texto distribuido como dominio público por la digitalización de danloi2/itercatholicum a partir de credobiblestudy.",
-      "sha256": "624345dd5d28adc143c4def636bd2370380820fc488a69041669e94444da727e",
-      "size_bytes": 1804089,
+      "numbering_scheme": "vulgata",
+      "sha256": "668ff021fc0eb581daa8dbb1ed6b3c18358ae2f9701aa5a7569c47ff5c7e3072",
+      "size_bytes": 1804092,
       "source_attribution": "danloi2/itercatholicum · Torres Amat 1823 (es-ES) · credobiblestudy",
       "source_url": "https://raw.githubusercontent.com/danloi2/itercatholicum/ffe943aaf0ec25dcbc0188f24471f6f6683069cc/src/shared/data/bibles/1823_torres_amat_es/01-gen-ta-es.json"
     },
@@ -148,8 +155,8 @@
       "language": "grc",
       "license": "public_domain",
       "license_basis": "Textus Receptus griego, dominio público por antigüedad. Anotaciones de manuscritos por Adam Boyd, dedicadas a PD.",
-      "sha256": "22d5d1a72efde7f3bb23b7de6b111f34a5d148c95c7746637b52f8228b4550d0",
-      "size_bytes": 432479,
+      "sha256": "1addb6c60616e2bbb3bb8085a303637a10a055ead3396ef4f77ab9e8a666c8b1",
+      "size_bytes": 432480,
       "source_attribution": "ebible.org · Textus Receptus (Adam Boyd)",
       "source_url": "https://ebible.org/Scriptures/grctr_usfm.zip"
     },
@@ -165,7 +172,7 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Texto base: Tregelles 1879 (vida + 95 desde 1970), edición completada por Jongkind 2009. Distribución vía STEPBible/Tyndale House bajo CC BY 4.0; atribución obligatoria.",
-      "sha256": "5d145de95be4108bd91ceddc4de3fb335e0395c3f5716b9ce1be39a7ae3ec05a",
+      "sha256": "e784c2cec8afc4ef0add278ad3e17ea156356b1fe057aadd774a65feec2f4098",
       "size_bytes": 423069,
       "source_attribution": "STEPBible.org / Tyndale House Cambridge — TAGNT (CC BY 4.0)",
       "source_url": "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/Translators%20Amalgamated%20OT%2BNT/TAGNT%20Mat-Jhn%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20STEPBible.org%20CC-BY.txt"
@@ -182,8 +189,9 @@
       "language": "la",
       "license": "public_domain",
       "license_basis": "Sixto-Clementine Vulgate, edición autoritativa de la Iglesia Católica fijada en 1592. Texto base en dominio público por antigüedad. Distribución a partir de la transcripción de Wikisource (la.wikisource.org/wiki/Vulgata_Clementina), estructurada por danloi2/itercatholicum.",
-      "sha256": "3b51ead78b36f1a044c53f2f10c1fcd781867eb69d8ff807cd0efe79452cadd0",
-      "size_bytes": 1508543,
+      "numbering_scheme": "vulgata",
+      "sha256": "f4abd7b5097b17eff76876ad40346045930b6c4f27adba10e24dd0846ee6fb04",
+      "size_bytes": 1508545,
       "source_attribution": "danloi2/itercatholicum · Vulgata Clementina 1592 (la) · Wikisource",
       "source_url": "https://raw.githubusercontent.com/danloi2/itercatholicum/ffe943aaf0ec25dcbc0188f24471f6f6683069cc/src/shared/data/bibles/1592_vulgata_clementina_la/01-gen-vc-la.json"
     },
@@ -199,8 +207,8 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Texto base: Westcott + Hort 1881 (vida + 95 desde 1996). Distribuido por STEPBible/Tyndale House con licencia Creative Commons Attribution 4.0; la atribución a STEPBible es obligatoria.",
-      "sha256": "71df0f9e4351eb6976be737143b58cc1605e70e108be6b56598d3fb783c47e2b",
-      "size_bytes": 423031,
+      "sha256": "c6f301aa9b296fd68e6c9509fefd47d6ad3cf85ded7c554fbd8bedf1e9e468bc",
+      "size_bytes": 423032,
       "source_attribution": "STEPBible.org / Tyndale House Cambridge — TAGNT (CC BY 4.0)",
       "source_url": "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/Translators%20Amalgamated%20OT%2BNT/TAGNT%20Mat-Jhn%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20STEPBible.org%20CC-BY.txt"
     },
@@ -216,8 +224,9 @@
       "language": "hbo",
       "license": "cc_by_4_0",
       "license_basis": "Texto del WLC en dominio público; morfología y datos OSHB bajo Creative Commons Attribution 4.0 (CC BY 4.0). La atribución se refleja en el manifest y en la pantalla Sobre Berea de la app.",
-      "sha256": "bd15d79223ecb1e31553635c117de1d378bb242fc5cfb76b7dc9a7f3d326bbb7",
-      "size_bytes": 1407855,
+      "numbering_scheme": "mt",
+      "sha256": "0b9b15473427d03d3e5243ff0253cf339f03d6a9b8bcb3729c8408f4532e41fd",
+      "size_bytes": 1407858,
       "source_attribution": "Open Scriptures Hebrew Bible v2.2 (CC BY 4.0)",
       "source_url": "https://github.com/openscriptures/morphhb/releases/download/v.2.2/OSHB-v.2.2.zip"
     },
@@ -233,12 +242,18 @@
       "language": "en",
       "license": "public_domain",
       "license_basis": "Young's Literal Translation, edición revisada de 1898 publicada póstumamente. Robert Young (m. 1888) cumple vida + 95 desde 1983. Distribución por ebible.org como dominio público.",
-      "sha256": "3d060957696f914b8e9a4959eb279fef79f0eb8b63f9e528e8afcc493d5e15ff",
+      "numbering_scheme": "mt",
+      "sha256": "fd303609cf8fb9453f3dd046ff2a768e47a7d3b0297be217f9dfd630f1e2561b",
       "size_bytes": 1319318,
       "source_attribution": "ebible.org · Young's Literal Translation",
       "source_url": "https://ebible.org/Scriptures/engylt_usfm.zip"
     }
   ],
-  "schema_version": "1.1",
+  "numbering_alias": {
+    "download_url": "https://github.com/berea-app/berea-textos-pd/releases/latest/download/numbering_alias.json",
+    "sha256": "744686b9da264a2be5c9ba0c3f4c21317a3736a27d56a9922f42c34ce1990283",
+    "size_bytes": 11388
+  },
+  "schema_version": "1.2",
   "updated_at": "2026-04-28T00:00:00-03:00"
 }

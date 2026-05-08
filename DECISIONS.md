@@ -386,6 +386,77 @@ propia numeración.
 
 ---
 
+## D-014 · Aliasing entre numeración MT y Vulgata/LXX (manifest 1.2)
+
+**Fecha:** 2026-05-08
+**Contexto:** Las ediciones del catálogo se dividen en dos tradiciones de
+numeración para los Salmos:
+
+- **MT** (Hebreo Masorético): RV 1909, KJV, ASV, YLT, Darby, WLC, todas las
+  ediciones críticas del NT griego.
+- **Vulgata/LXX**: DRC, Torres Amat, Vulgata Clementina, Brenton.
+
+Sal 23 MT ("El Señor es mi pastor") es Sal 22 Vulgata. Comparar entre
+tradiciones sin un alias confunde al usuario y rompe deep links.
+
+**Decisión:** publicar un dataset de alias `canon/numbering_alias.json`
+junto con el manifest. La app va a poder traducir referencias entre
+tradiciones offline.
+
+**Alcance v1.0:** sólo Salmos. Dos razones documentadas:
+
+1. **Joel y Malaquías:** la teoría dice que la Vulgata clásica usa Joel
+   en 4 caps y Mal en 3 caps. Pero todas las ediciones digitales que
+   ahora distribuimos (DRC, Vulgata Clementina, Torres Amat) traen Joel
+   en 3 caps y Mal en 4 caps — alineadas con MT. No hay divergencia
+   real para aliasar.
+2. **1 Samuel 23/24:** divergencia de un solo verso entre MT y Vulgata,
+   pero las ediciones reales no son consistentes entre sí (RV/TA tienen
+   un patrón, DRC/VC otro). Aliasar uniformemente sería erróneo para al
+   menos una edición.
+
+**Estructura del alias:**
+
+- `chapter_aliases`: 133 entradas para Salmos 11–113 MT ↔ 10–112 Vulgata
+  y Salmos 117–146 MT ↔ 116–145 Vulgata (offset −1 después de cada
+  merge).
+- `split_or_merge`: 4 entradas para los casos estructurales:
+  - Sal 9 + 10 MT ≡ Sal 9 Vulgata (merge)
+  - Sal 114 + 115 MT ≡ Sal 113 Vulgata (merge)
+  - Sal 116 MT ≡ Sal 114 + 115 Vulgata (split por versículo 9/10)
+  - Sal 147 MT ≡ Sal 146 + 147 Vulgata (split por versículo 11/12)
+
+Salmos 1–8 y 148–150 son idénticos en ambas tradiciones (cobertura
+implícita; no requieren aliasing).
+
+**Generación:** `scripts/gen_numbering_alias.py` produce el JSON
+determinísticamente desde la regla MT/LXX. **No editar a mano.**
+
+**Manifest schema 1.2:**
+
+- Campo `numbering_scheme` opcional por Biblia (`"mt"` o `"vulgata"`).
+  Omitido para NT-only.
+- Top-level `numbering_alias` con `download_url`, `sha256`, `size_bytes`.
+
+**Distribución:** `numbering_alias.json` se publica como asset del
+GitHub Release junto con los `.bb`. La app baja el archivo, valida SHA-256
+contra el manifest, y lo importa a una tabla SQLite de alias (paso C/D
+del plan, sesión próxima).
+
+**Tests:** `tests/test_numbering_alias.py` (12 tests) cubre:
+- Validación contra JSON Schema.
+- Unicidad de `(book, mt)` y `(book, vulgata)`.
+- Disjuntez entre `chapter_aliases` y `split_or_merge`.
+- Cobertura completa del salterio (1..150).
+- Sanity probes: para una muestra de capítulos aliasados, ambos lados
+  existen en los `.bb` reales (RV 1909 vs Vulgata Clementina).
+
+**Reproducibilidad:** 14/14 Biblias siguen byte-idénticas con
+`BEREA_FAKE_NOW` pinneado. El manifest gana campos pero sigue
+determinístico.
+
+---
+
 ## D-009 · Versionado
 
 **Fecha:** 2026-04-28

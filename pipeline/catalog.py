@@ -126,6 +126,12 @@ class CatalogEntry:
     parser: str
     source_filename: str
     bundled_in_apk: bool
+    # Numbering scheme used by this edition's chapters and verses.
+    # ``"mt"``: follows the Hebrew Masoretic numbering (RV, KJV, ASV, ...).
+    # ``"vulgata"``: follows the LXX/Vulgate numbering (DRC, Torres Amat, ...).
+    # ``None``: not applicable (NT-only or other editions where the
+    # divergence does not arise).
+    numbering_scheme: str | None = None
     # Optional. When empty, defaults to the protestant 66.
     book_ids: tuple[str, ...] = field(default_factory=tuple)
     # Setting this to False suppresses the verifier's "missing chapters"
@@ -176,6 +182,7 @@ def _torres_amat_entry() -> CatalogEntry:
         parser="itercatholicum_json",
         source_filename=primary_filename,
         bundled_in_apk=False,
+        numbering_scheme="vulgata",
         book_ids=_CATHOLIC_73_BOOK_IDS,
         # Esther y Daniel pueden traer adiciones inline con numeración
         # propia; el canon protestante de 39+27 es referencia, no exigencia.
@@ -212,6 +219,7 @@ def _vulgata_clementina_entry() -> CatalogEntry:
         parser="itercatholicum_json",
         source_filename=primary_filename,
         bundled_in_apk=False,
+        numbering_scheme="vulgata",
         book_ids=_CATHOLIC_73_BOOK_IDS,
         expected_canon_complete=False,
         extra_sources=extras,
@@ -238,6 +246,7 @@ CATALOG: dict[str, CatalogEntry] = {
         parser="ebible_usfm",
         source_filename="spaRV1909_usfm.zip",
         bundled_in_apk=True,
+        numbering_scheme="mt",
     ),
     "tr": CatalogEntry(
         bible_id="tr",
@@ -278,6 +287,7 @@ CATALOG: dict[str, CatalogEntry] = {
         parser="ebible_usfm",
         source_filename="eng-Brenton_usfm.zip",
         bundled_in_apk=False,
+        numbering_scheme="vulgata",
         book_ids=_BRENTON_BOOK_IDS,
         expected_canon_complete=False,
     ),
@@ -416,6 +426,7 @@ CATALOG: dict[str, CatalogEntry] = {
         parser="ebible_usfm",
         source_filename="eng-kjv_usfm.zip",
         bundled_in_apk=False,
+        numbering_scheme="mt",
         book_ids=_KJV_APOCRYPHA_BOOK_IDS,
         # Apocrypha + KJV uses non-canonical chapter counts in some books
         # (e.g., Esther additions ESG, 2 Esdras 16 chapters). Suppress the
@@ -441,6 +452,7 @@ CATALOG: dict[str, CatalogEntry] = {
         parser="ebible_usfm",
         source_filename="eng-asv_usfm.zip",
         bundled_in_apk=False,
+        numbering_scheme="mt",
     ),
     "ylt": CatalogEntry(
         bible_id="ylt",
@@ -461,6 +473,7 @@ CATALOG: dict[str, CatalogEntry] = {
         parser="ebible_usfm",
         source_filename="engylt_usfm.zip",
         bundled_in_apk=False,
+        numbering_scheme="mt",
     ),
     "darby": CatalogEntry(
         bible_id="darby",
@@ -481,6 +494,7 @@ CATALOG: dict[str, CatalogEntry] = {
         parser="ebible_usfm",
         source_filename="engDBY_usfm.zip",
         bundled_in_apk=False,
+        numbering_scheme="mt",
     ),
     "drc": CatalogEntry(
         bible_id="drc",
@@ -502,6 +516,7 @@ CATALOG: dict[str, CatalogEntry] = {
         parser="ebible_usfm",
         source_filename="engDRA_usfm.zip",
         bundled_in_apk=False,
+        numbering_scheme="vulgata",
         book_ids=_CATHOLIC_73_BOOK_IDS,
         # Esther y Daniel incluyen las adiciones deuterocanónicas inline en
         # el USFM (capítulos extra), distinto al esquema KJV que las
@@ -537,6 +552,7 @@ CATALOG: dict[str, CatalogEntry] = {
         parser="oshb_osis",
         source_filename="OSHB-v.2.2.zip",
         bundled_in_apk=False,
+        numbering_scheme="mt",
         book_ids=_OT_BOOK_IDS,
         # WLC follows MT numbering (Joel 4 chapters, Malachi 3 chapters);
         # we ship those as-is. Cross-translation alignment via verse_alias.

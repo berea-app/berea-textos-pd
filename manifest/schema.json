@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://berea.app/schemas/manifest-1.1.json",
+  "$id": "https://berea.app/schemas/manifest-1.2.json",
   "title": "Berea PD Texts Manifest",
   "type": "object",
   "required": ["schema_version", "updated_at", "bibles"],
@@ -18,6 +18,9 @@
     "bibles": {
       "type": "array",
       "items": { "$ref": "#/$defs/Bible" }
+    },
+    "numbering_alias": {
+      "$ref": "#/$defs/NumberingAlias"
     }
   },
   "$defs": {
@@ -80,7 +83,26 @@
           "pattern": "^([a-f0-9]{64}|TBD)$"
         },
         "size_bytes": { "type": "integer", "minimum": 0 },
-        "bundled_in_apk": { "type": "boolean" }
+        "bundled_in_apk": { "type": "boolean" },
+        "numbering_scheme": {
+          "type": "string",
+          "enum": ["mt", "vulgata"],
+          "description": "Numbering scheme used by this edition. Only present when applicable (omitted for NT-only editions where the divergence does not arise)."
+        }
+      }
+    },
+    "NumberingAlias": {
+      "type": "object",
+      "required": ["download_url", "sha256", "size_bytes"],
+      "additionalProperties": false,
+      "description": "Cross-tradition chapter alias dataset published alongside this manifest.",
+      "properties": {
+        "download_url": { "type": "string", "format": "uri" },
+        "sha256": {
+          "type": "string",
+          "pattern": "^([a-f0-9]{64}|TBD)$"
+        },
+        "size_bytes": { "type": "integer", "minimum": 0 }
       }
     }
   }

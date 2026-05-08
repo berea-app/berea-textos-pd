@@ -19,10 +19,11 @@ from .verify import VerifyReport, verify
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = REPO_ROOT / "manifest" / "manifest.json"
-MANIFEST_SCHEMA_VERSION = "1.1"
+MANIFEST_SCHEMA_VERSION = "1.2"
 RELEASE_DOWNLOAD_BASE = (
     "https://github.com/berea-app/berea-textos-pd/releases/latest/download"
 )
+NUMBERING_ALIAS_PATH = REPO_ROOT / "canon" / "numbering_alias.json"
 
 
 def _git_commit() -> str:
@@ -108,32 +109,50 @@ def regenerate_manifest() -> Path:
             size = bb_path.stat().st_size
         else:
             sha, size = "TBD", 0
-        bibles.append(
-            {
-                "attribution_required": entry.attribution_required,
-                "attribution_text": entry.attribution_text,
-                "bible_id": entry.bible_id,
-                "bundled_in_apk": entry.bundled_in_apk,
-                "canon_family": entry.canon_family,
-                "category": entry.category,
-                "display_name": entry.display_name,
-                "download_url": f"{RELEASE_DOWNLOAD_BASE}/{entry.bible_id}.bb",
-                "language": entry.language,
-                "license": entry.license,
-                "license_basis": entry.license_basis,
-                "sha256": sha,
-                "size_bytes": size,
-                "source_attribution": entry.source_attribution,
-                "source_url": entry.source_url,
-            }
-        )
+        bible_entry = {
+            "attribution_required": entry.attribution_required,
+            "attribution_text": entry.attribution_text,
+            "bible_id": entry.bible_id,
+            "bundled_in_apk": entry.bundled_in_apk,
+            "canon_family": entry.canon_family,
+            "category": entry.category,
+            "display_name": entry.display_name,
+            "download_url": f"{RELEASE_DOWNLOAD_BASE}/{entry.bible_id}.bb",
+            "language": entry.language,
+            "license": entry.license,
+            "license_basis": entry.license_basis,
+            "sha256": sha,
+            "size_bytes": size,
+            "source_attribution": entry.source_attribution,
+            "source_url": entry.source_url,
+        }
+        if entry.numbering_scheme is not None:
+            bible_entry["numbering_scheme"] = entry.numbering_scheme
+        bibles.append(bible_entry)
 
     bibles.sort(key=lambda b: b["bible_id"])
-    payload = {
+
+    # Numbering alias dataset is published alongside the manifest as a
+    # separate release asset. The manifest carries its sha256/size so the
+    # app can verify the integrity of the file it downloads.
+    numbering_alias_meta: dict | None = None
+    if NUMBERING_ALIAS_PATH.exists():
+        alias_bytes = NUMBERING_ALIAS_PATH.read_bytes()
+        numbering_alias_meta = {
+            "download_url": (
+                f"{RELEASE_DOWNLOAD_BASE}/{NUMBERING_ALIAS_PATH.name}"
+            ),
+            "sha256": sha256_of(NUMBERING_ALIAS_PATH),
+            "size_bytes": len(alias_bytes),
+        }
+
+    payload: dict = {
         "schema_version": MANIFEST_SCHEMA_VERSION,
         "updated_at": _now_iso(),
         "bibles": bibles,
     }
+    if numbering_alias_meta is not None:
+        payload["numbering_alias"] = numbering_alias_meta
     MANIFEST_PATH.parent.mkdir(parents=True, exist_ok=True)
     MANIFEST_PATH.write_text(
         json.dumps(payload, sort_keys=True, ensure_ascii=False, indent=2) + "\n",

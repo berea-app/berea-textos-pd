@@ -1,0 +1,725 @@
+{
+  "chapter_aliases": [
+    {
+      "book": "psa",
+      "mt": 11,
+      "vulgata": 10
+    },
+    {
+      "book": "psa",
+      "mt": 12,
+      "vulgata": 11
+    },
+    {
+      "book": "psa",
+      "mt": 13,
+      "vulgata": 12
+    },
+    {
+      "book": "psa",
+      "mt": 14,
+      "vulgata": 13
+    },
+    {
+      "book": "psa",
+      "mt": 15,
+      "vulgata": 14
+    },
+    {
+      "book": "psa",
+      "mt": 16,
+      "vulgata": 15
+    },
+    {
+      "book": "psa",
+      "mt": 17,
+      "vulgata": 16
+    },
+    {
+      "book": "psa",
+      "mt": 18,
+      "vulgata": 17
+    },
+    {
+      "book": "psa",
+      "mt": 19,
+      "vulgata": 18
+    },
+    {
+      "book": "psa",
+      "mt": 20,
+      "vulgata": 19
+    },
+    {
+      "book": "psa",
+      "mt": 21,
+      "vulgata": 20
+    },
+    {
+      "book": "psa",
+      "mt": 22,
+      "vulgata": 21
+    },
+    {
+      "book": "psa",
+      "mt": 23,
+      "vulgata": 22
+    },
+    {
+      "book": "psa",
+      "mt": 24,
+      "vulgata": 23
+    },
+    {
+      "book": "psa",
+      "mt": 25,
+      "vulgata": 24
+    },
+    {
+      "book": "psa",
+      "mt": 26,
+      "vulgata": 25
+    },
+    {
+      "book": "psa",
+      "mt": 27,
+      "vulgata": 26
+    },
+    {
+      "book": "psa",
+      "mt": 28,
+      "vulgata": 27
+    },
+    {
+      "book": "psa",
+      "mt": 29,
+      "vulgata": 28
+    },
+    {
+      "book": "psa",
+      "mt": 30,
+      "vulgata": 29
+    },
+    {
+      "book": "psa",
+      "mt": 31,
+      "vulgata": 30
+    },
+    {
+      "book": "psa",
+      "mt": 32,
+      "vulgata": 31
+    },
+    {
+      "book": "psa",
+      "mt": 33,
+      "vulgata": 32
+    },
+    {
+      "book": "psa",
+      "mt": 34,
+      "vulgata": 33
+    },
+    {
+      "book": "psa",
+      "mt": 35,
+      "vulgata": 34
+    },
+    {
+      "book": "psa",
+      "mt": 36,
+      "vulgata": 35
+    },
+    {
+      "book": "psa",
+      "mt": 37,
+      "vulgata": 36
+    },
+    {
+      "book": "psa",
+      "mt": 38,
+      "vulgata": 37
+    },
+    {
+      "book": "psa",
+      "mt": 39,
+      "vulgata": 38
+    },
+    {
+      "book": "psa",
+      "mt": 40,
+      "vulgata": 39
+    },
+    {
+      "book": "psa",
+      "mt": 41,
+      "vulgata": 40
+    },
+    {
+      "book": "psa",
+      "mt": 42,
+      "vulgata": 41
+    },
+    {
+      "book": "psa",
+      "mt": 43,
+      "vulgata": 42
+    },
+    {
+      "book": "psa",
+      "mt": 44,
+      "vulgata": 43
+    },
+    {
+      "book": "psa",
+      "mt": 45,
+      "vulgata": 44
+    },
+    {
+      "book": "psa",
+      "mt": 46,
+      "vulgata": 45
+    },
+    {
+      "book": "psa",
+      "mt": 47,
+      "vulgata": 46
+    },
+    {
+      "book": "psa",
+      "mt": 48,
+      "vulgata": 47
+    },
+    {
+      "book": "psa",
+      "mt": 49,
+      "vulgata": 48
+    },
+    {
+      "book": "psa",
+      "mt": 50,
+      "vulgata": 49
+    },
+    {
+      "book": "psa",
+      "mt": 51,
+      "vulgata": 50
+    },
+    {
+      "book": "psa",
+      "mt": 52,
+      "vulgata": 51
+    },
+    {
+      "book": "psa",
+      "mt": 53,
+      "vulgata": 52
+    },
+    {
+      "book": "psa",
+      "mt": 54,
+      "vulgata": 53
+    },
+    {
+      "book": "psa",
+      "mt": 55,
+      "vulgata": 54
+    },
+    {
+      "book": "psa",
+      "mt": 56,
+      "vulgata": 55
+    },
+    {
+      "book": "psa",
+      "mt": 57,
+      "vulgata": 56
+    },
+    {
+      "book": "psa",
+      "mt": 58,
+      "vulgata": 57
+    },
+    {
+      "book": "psa",
+      "mt": 59,
+      "vulgata": 58
+    },
+    {
+      "book": "psa",
+      "mt": 60,
+      "vulgata": 59
+    },
+    {
+      "book": "psa",
+      "mt": 61,
+      "vulgata": 60
+    },
+    {
+      "book": "psa",
+      "mt": 62,
+      "vulgata": 61
+    },
+    {
+      "book": "psa",
+      "mt": 63,
+      "vulgata": 62
+    },
+    {
+      "book": "psa",
+      "mt": 64,
+      "vulgata": 63
+    },
+    {
+      "book": "psa",
+      "mt": 65,
+      "vulgata": 64
+    },
+    {
+      "book": "psa",
+      "mt": 66,
+      "vulgata": 65
+    },
+    {
+      "book": "psa",
+      "mt": 67,
+      "vulgata": 66
+    },
+    {
+      "book": "psa",
+      "mt": 68,
+      "vulgata": 67
+    },
+    {
+      "book": "psa",
+      "mt": 69,
+      "vulgata": 68
+    },
+    {
+      "book": "psa",
+      "mt": 70,
+      "vulgata": 69
+    },
+    {
+      "book": "psa",
+      "mt": 71,
+      "vulgata": 70
+    },
+    {
+      "book": "psa",
+      "mt": 72,
+      "vulgata": 71
+    },
+    {
+      "book": "psa",
+      "mt": 73,
+      "vulgata": 72
+    },
+    {
+      "book": "psa",
+      "mt": 74,
+      "vulgata": 73
+    },
+    {
+      "book": "psa",
+      "mt": 75,
+      "vulgata": 74
+    },
+    {
+      "book": "psa",
+      "mt": 76,
+      "vulgata": 75
+    },
+    {
+      "book": "psa",
+      "mt": 77,
+      "vulgata": 76
+    },
+    {
+      "book": "psa",
+      "mt": 78,
+      "vulgata": 77
+    },
+    {
+      "book": "psa",
+      "mt": 79,
+      "vulgata": 78
+    },
+    {
+      "book": "psa",
+      "mt": 80,
+      "vulgata": 79
+    },
+    {
+      "book": "psa",
+      "mt": 81,
+      "vulgata": 80
+    },
+    {
+      "book": "psa",
+      "mt": 82,
+      "vulgata": 81
+    },
+    {
+      "book": "psa",
+      "mt": 83,
+      "vulgata": 82
+    },
+    {
+      "book": "psa",
+      "mt": 84,
+      "vulgata": 83
+    },
+    {
+      "book": "psa",
+      "mt": 85,
+      "vulgata": 84
+    },
+    {
+      "book": "psa",
+      "mt": 86,
+      "vulgata": 85
+    },
+    {
+      "book": "psa",
+      "mt": 87,
+      "vulgata": 86
+    },
+    {
+      "book": "psa",
+      "mt": 88,
+      "vulgata": 87
+    },
+    {
+      "book": "psa",
+      "mt": 89,
+      "vulgata": 88
+    },
+    {
+      "book": "psa",
+      "mt": 90,
+      "vulgata": 89
+    },
+    {
+      "book": "psa",
+      "mt": 91,
+      "vulgata": 90
+    },
+    {
+      "book": "psa",
+      "mt": 92,
+      "vulgata": 91
+    },
+    {
+      "book": "psa",
+      "mt": 93,
+      "vulgata": 92
+    },
+    {
+      "book": "psa",
+      "mt": 94,
+      "vulgata": 93
+    },
+    {
+      "book": "psa",
+      "mt": 95,
+      "vulgata": 94
+    },
+    {
+      "book": "psa",
+      "mt": 96,
+      "vulgata": 95
+    },
+    {
+      "book": "psa",
+      "mt": 97,
+      "vulgata": 96
+    },
+    {
+      "book": "psa",
+      "mt": 98,
+      "vulgata": 97
+    },
+    {
+      "book": "psa",
+      "mt": 99,
+      "vulgata": 98
+    },
+    {
+      "book": "psa",
+      "mt": 100,
+      "vulgata": 99
+    },
+    {
+      "book": "psa",
+      "mt": 101,
+      "vulgata": 100
+    },
+    {
+      "book": "psa",
+      "mt": 102,
+      "vulgata": 101
+    },
+    {
+      "book": "psa",
+      "mt": 103,
+      "vulgata": 102
+    },
+    {
+      "book": "psa",
+      "mt": 104,
+      "vulgata": 103
+    },
+    {
+      "book": "psa",
+      "mt": 105,
+      "vulgata": 104
+    },
+    {
+      "book": "psa",
+      "mt": 106,
+      "vulgata": 105
+    },
+    {
+      "book": "psa",
+      "mt": 107,
+      "vulgata": 106
+    },
+    {
+      "book": "psa",
+      "mt": 108,
+      "vulgata": 107
+    },
+    {
+      "book": "psa",
+      "mt": 109,
+      "vulgata": 108
+    },
+    {
+      "book": "psa",
+      "mt": 110,
+      "vulgata": 109
+    },
+    {
+      "book": "psa",
+      "mt": 111,
+      "vulgata": 110
+    },
+    {
+      "book": "psa",
+      "mt": 112,
+      "vulgata": 111
+    },
+    {
+      "book": "psa",
+      "mt": 113,
+      "vulgata": 112
+    },
+    {
+      "book": "psa",
+      "mt": 117,
+      "vulgata": 116
+    },
+    {
+      "book": "psa",
+      "mt": 118,
+      "vulgata": 117
+    },
+    {
+      "book": "psa",
+      "mt": 119,
+      "vulgata": 118
+    },
+    {
+      "book": "psa",
+      "mt": 120,
+      "vulgata": 119
+    },
+    {
+      "book": "psa",
+      "mt": 121,
+      "vulgata": 120
+    },
+    {
+      "book": "psa",
+      "mt": 122,
+      "vulgata": 121
+    },
+    {
+      "book": "psa",
+      "mt": 123,
+      "vulgata": 122
+    },
+    {
+      "book": "psa",
+      "mt": 124,
+      "vulgata": 123
+    },
+    {
+      "book": "psa",
+      "mt": 125,
+      "vulgata": 124
+    },
+    {
+      "book": "psa",
+      "mt": 126,
+      "vulgata": 125
+    },
+    {
+      "book": "psa",
+      "mt": 127,
+      "vulgata": 126
+    },
+    {
+      "book": "psa",
+      "mt": 128,
+      "vulgata": 127
+    },
+    {
+      "book": "psa",
+      "mt": 129,
+      "vulgata": 128
+    },
+    {
+      "book": "psa",
+      "mt": 130,
+      "vulgata": 129
+    },
+    {
+      "book": "psa",
+      "mt": 131,
+      "vulgata": 130
+    },
+    {
+      "book": "psa",
+      "mt": 132,
+      "vulgata": 131
+    },
+    {
+      "book": "psa",
+      "mt": 133,
+      "vulgata": 132
+    },
+    {
+      "book": "psa",
+      "mt": 134,
+      "vulgata": 133
+    },
+    {
+      "book": "psa",
+      "mt": 135,
+      "vulgata": 134
+    },
+    {
+      "book": "psa",
+      "mt": 136,
+      "vulgata": 135
+    },
+    {
+      "book": "psa",
+      "mt": 137,
+      "vulgata": 136
+    },
+    {
+      "book": "psa",
+      "mt": 138,
+      "vulgata": 137
+    },
+    {
+      "book": "psa",
+      "mt": 139,
+      "vulgata": 138
+    },
+    {
+      "book": "psa",
+      "mt": 140,
+      "vulgata": 139
+    },
+    {
+      "book": "psa",
+      "mt": 141,
+      "vulgata": 140
+    },
+    {
+      "book": "psa",
+      "mt": 142,
+      "vulgata": 141
+    },
+    {
+      "book": "psa",
+      "mt": 143,
+      "vulgata": 142
+    },
+    {
+      "book": "psa",
+      "mt": 144,
+      "vulgata": 143
+    },
+    {
+      "book": "psa",
+      "mt": 145,
+      "vulgata": 144
+    },
+    {
+      "book": "psa",
+      "mt": 146,
+      "vulgata": 145
+    }
+  ],
+  "description": "Cross-tradition chapter aliasing between MT-numbered and LXX/Vulgate-numbered Bibles. Covers the Psalter only in v1.0; Joel, Malachi and 1 Samuel are excluded because the editions currently distributed by Berea use MT numbering for those books.",
+  "schema_version": "1.0",
+  "schemes": {
+    "mt": "Hebrew Masoretic chapter numbering. Used by editions that follow the Hebrew Bible structure: Reina-Valera 1909, King James Version, American Standard Version, Young's Literal Translation, Darby Bible, Westminster Leningrad Codex (OSHB), and the critical Greek New Testaments.",
+    "vulgata": "LXX / Vulgate chapter numbering. Used by editions in the Catholic / Septuagint tradition: Douay-Rheims, Torres Amat, Vulgata Clementina, Brenton's English Septuagint."
+  },
+  "split_or_merge": [
+    {
+      "book": "psa",
+      "mt_chapters": [
+        9,
+        10
+      ],
+      "note": "Psalms 9 and 10 of the Masoretic Text are a single psalm (Psalm 9) in the LXX/Vulgate.",
+      "type": "merged_in_vulgata",
+      "vulgata_chapters": [
+        9
+      ]
+    },
+    {
+      "book": "psa",
+      "mt_chapters": [
+        114,
+        115
+      ],
+      "note": "Psalms 114 and 115 MT are a single Psalm 113 in the LXX/Vulgate.",
+      "type": "merged_in_vulgata",
+      "vulgata_chapters": [
+        113
+      ]
+    },
+    {
+      "book": "psa",
+      "mt_chapters": [
+        116
+      ],
+      "note": "Psalm 116 MT is split into Psalms 114 and 115 in the LXX/Vulgate. Verses 1-9 are Psalm 114, verses 10-19 are Psalm 115.",
+      "type": "split_in_vulgata",
+      "vulgata_chapters": [
+        114,
+        115
+      ]
+    },
+    {
+      "book": "psa",
+      "mt_chapters": [
+        147
+      ],
+      "note": "Psalm 147 MT is split into Psalms 146 and 147 in the LXX/Vulgate. Verses 1-11 are Psalm 146, verses 12-20 are Psalm 147.",
+      "type": "split_in_vulgata",
+      "vulgata_chapters": [
+        146,
+        147
+      ]
+    }
+  ]
+}
