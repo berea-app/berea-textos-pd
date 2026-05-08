@@ -6,7 +6,7 @@ import importlib
 import json
 import os
 import subprocess
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from .canon import load_canon_66
@@ -42,7 +42,7 @@ def _git_commit() -> str:
 def _now_iso() -> str:
     if os.environ.get("BEREA_FAKE_NOW"):
         return os.environ["BEREA_FAKE_NOW"]
-    return datetime.now(timezone.utc).astimezone().replace(microsecond=0).isoformat()
+    return datetime.now(UTC).astimezone().replace(microsecond=0).isoformat()
 
 
 def _load_parser(

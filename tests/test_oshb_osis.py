@@ -5,8 +5,9 @@ Tests run against an inline fixture so they don't need the full archive.
 
 from __future__ import annotations
 
-from pipeline.parsers.oshb_osis import _parse_book_file, _verse_text
 from xml.etree import ElementTree as ET
+
+from pipeline.parsers.oshb_osis import _parse_book_file, _verse_text
 
 OSIS_NS = "http://www.bibletechnologies.net/2003/OSIS/namespace"
 

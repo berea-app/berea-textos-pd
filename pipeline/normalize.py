@@ -6,8 +6,8 @@ the canonical ``books -> chapters -> verses`` structure consumed by ``pack.py``.
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Iterable
 
 from .canon import CanonBook, load_full_canon
 
@@ -28,7 +28,7 @@ class NormalizedBook:
     display_name: str
     abbreviation: str
     position: int
-    chapters: list["NormalizedChapter"]
+    chapters: list[NormalizedChapter]
 
 
 @dataclass(frozen=True)

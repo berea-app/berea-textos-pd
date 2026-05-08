@@ -11,7 +11,7 @@ from __future__ import annotations
 import argparse
 import sys
 
-from .build import build_all, build_one, regenerate_manifest
+from .build import build_one, regenerate_manifest
 from .catalog import CATALOG
 
 

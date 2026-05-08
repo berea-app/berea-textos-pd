@@ -20,8 +20,8 @@ from __future__ import annotations
 import io
 import re
 import zipfile
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 
 from ..normalize import ParsedVerse
 from .base import BibleParser
@@ -58,7 +58,10 @@ USFM_TO_BOOK_ID: dict[str, str] = {
 }
 
 # Files we always skip (front matter, glossary, peripheral material).
-SKIPPED_USFM_IDS = {"FRT", "BAK", "GLO", "INT", "CNC", "TDX", "NDX", "OTH", "XXA", "XXB", "XXC", "XXD"}
+SKIPPED_USFM_IDS = {
+    "FRT", "BAK", "GLO", "INT", "CNC", "TDX", "NDX", "OTH",
+    "XXA", "XXB", "XXC", "XXD",
+}
 
 _RE_FOOTNOTE = re.compile(r"\\f\s.*?\\f\*", re.DOTALL)
 _RE_XREF = re.compile(r"\\x\s.*?\\x\*", re.DOTALL)

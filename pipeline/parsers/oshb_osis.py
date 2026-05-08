@@ -14,10 +14,9 @@ Reference: https://github.com/openscriptures/morphhb
 
 from __future__ import annotations
 
-import re
 import zipfile
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 from xml.etree import ElementTree as ET
 
 from ..normalize import ParsedVerse

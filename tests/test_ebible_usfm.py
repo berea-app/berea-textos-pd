@@ -7,20 +7,23 @@ from __future__ import annotations
 
 from pipeline.parsers.ebible_usfm import _clean_text, _parse_book
 
-
-GEN_FIXTURE = """\
-\\id GEN  Genesis
-\\h Génesis
-\\toc1 Génesis
-\\mt1 Génesis
-\\c 1
-\\p
-\\v 1  \\w EN el principio|strong="H7225"\\w* \\w crió|strong="H1254"\\w* \\w Dios|strong="H0430"\\w*.
-\\v 2  Texto con \\add adición\\add* y \\nd nombre divino\\nd*.
-\\v 3  Después \\f + nota \\f* del versículo.
-\\c 2
-\\v 1  Capítulo dos versículo uno.
-"""
+_GEN_V1 = (
+    '\\v 1  \\w EN el principio|strong="H7225"\\w*'
+    ' \\w crió|strong="H1254"\\w* \\w Dios|strong="H0430"\\w*.'
+)
+GEN_FIXTURE = (
+    "\\id GEN  Genesis\n"
+    "\\h Génesis\n"
+    "\\toc1 Génesis\n"
+    "\\mt1 Génesis\n"
+    "\\c 1\n"
+    "\\p\n"
+    f"{_GEN_V1}\n"
+    "\\v 2  Texto con \\add adición\\add* y \\nd nombre divino\\nd*.\n"
+    "\\v 3  Después \\f + nota \\f* del versículo.\n"
+    "\\c 2\n"
+    "\\v 1  Capítulo dos versículo uno.\n"
+)
 
 
 def test_clean_text_strips_morphology_tags():

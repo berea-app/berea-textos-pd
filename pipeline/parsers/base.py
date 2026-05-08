@@ -8,8 +8,8 @@ sorting, validating against the canon) happens later in ``pipeline.normalize``.
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 
 from ..normalize import ParsedVerse
 

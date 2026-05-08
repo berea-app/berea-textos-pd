@@ -7,9 +7,9 @@ JSON files; the duplication is intentional and enforced by CI.
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterable
 
 CANON_DIR = Path(__file__).resolve().parent.parent / "canon"
 

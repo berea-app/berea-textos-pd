@@ -22,8 +22,8 @@ abbreviations (Mat, Mrk, Luk, Jhn, Act, Rom, 1Co, 2Co, Gal, Eph, Php, Col,
 from __future__ import annotations
 
 import re
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 
 from ..normalize import ParsedVerse
 from .base import BibleParser
