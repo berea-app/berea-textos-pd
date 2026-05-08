@@ -39,6 +39,24 @@ _BRENTON_BOOK_IDS: tuple[str, ...] = _OT_BOOK_IDS + (
     "sus", "bel", "1ma", "2ma", "1es", "man", "3ma", "4ma",
 )
 
+# KJV 1769 + Apocrypha: 39 OT + 27 NT + Anglican apocryphal canon (Tobit,
+# Judith, Esther additions as a separate book ESG, Wisdom, Sirach, Baruch with
+# the Letter of Jeremiah, Song of the Three Children, Susanna, Bel and the
+# Dragon, 1-2 Maccabees, 1-2 Esdras, Prayer of Manasseh).
+_KJV_APOCRYPHA_BOOK_IDS: tuple[str, ...] = _OT_BOOK_IDS + _NT_BOOK_IDS + (
+    "tob", "jdt", "esg", "wis", "sir", "bar", "lje",
+    "s3y", "sus", "bel", "1ma", "2ma", "1es", "2es", "man",
+)
+
+# Catholic 73-book canon: 39 OT + 7 deuterocanonicals (Tobit, Judith, Wisdom,
+# Sirach, Baruch [with Letter of Jeremiah inline as ch.6], 1-2 Maccabees) + 27
+# NT. Esther additions and Daniel additions (Susanna, Bel, Song of the Three)
+# are typically inlined in the Catholic edition rather than split as separate
+# books, so they are not declared here.
+_CATHOLIC_73_BOOK_IDS: tuple[str, ...] = _OT_BOOK_IDS + (
+    "tob", "jdt", "wis", "sir", "bar", "1ma", "2ma",
+) + _NT_BOOK_IDS
+
 
 @dataclass(frozen=True)
 class CatalogEntry:
@@ -250,6 +268,124 @@ CATALOG: dict[str, CatalogEntry] = {
             ),
         ),
         parser_config=(("edition", "Treg"),),
+    ),
+    "kjv": CatalogEntry(
+        bible_id="kjv",
+        display_name="King James Version + Apocrypha (1769)",
+        language="en",
+        canon_family="protestant_66_plus_apocrypha",
+        category="recomendado",
+        license="public_domain",
+        license_basis=(
+            "King James Version, texto estandarizado de 1769, con Apócrifa. "
+            "Dominio público por antigüedad fuera del Reino Unido. Dentro "
+            "del UK, las Letters Patent del Crown reservan la impresión a "
+            "Cambridge / Oxford / Collins; la distribución digital global "
+            "no se considera afectada en la práctica. Berea distribuye el "
+            "texto sin modificar."
+        ),
+        source_url="https://ebible.org/Scriptures/eng-kjv_usfm.zip",
+        source_attribution="ebible.org · King James Version 1769 + Apocrypha",
+        attribution_required=False,
+        attribution_text=(
+            "King James Version 1769 + Apocrypha · dominio público "
+            "(fuera del Reino Unido)."
+        ),
+        parser="ebible_usfm",
+        source_filename="eng-kjv_usfm.zip",
+        bundled_in_apk=False,
+        book_ids=_KJV_APOCRYPHA_BOOK_IDS,
+        # Apocrypha + KJV uses non-canonical chapter counts in some books
+        # (e.g., Esther additions ESG, 2 Esdras 16 chapters). Suppress the
+        # verifier's "missing chapters" check.
+        expected_canon_complete=False,
+    ),
+    "asv": CatalogEntry(
+        bible_id="asv",
+        display_name="American Standard Version (1901)",
+        language="en",
+        canon_family="protestant_66",
+        category="recomendado",
+        license="public_domain",
+        license_basis=(
+            "American Standard Version, publicada en 1901 (pre-1929 en EEUU "
+            "y vida + 95 cumplido para todos los miembros del comité "
+            "traductor). Distribución por ebible.org como dominio público."
+        ),
+        source_url="https://ebible.org/Scriptures/eng-asv_usfm.zip",
+        source_attribution="ebible.org · American Standard Version 1901",
+        attribution_required=False,
+        attribution_text="American Standard Version 1901 · dominio público.",
+        parser="ebible_usfm",
+        source_filename="eng-asv_usfm.zip",
+        bundled_in_apk=False,
+    ),
+    "ylt": CatalogEntry(
+        bible_id="ylt",
+        display_name="Young's Literal Translation (1898)",
+        language="en",
+        canon_family="protestant_66",
+        category="recomendado",
+        license="public_domain",
+        license_basis=(
+            "Young's Literal Translation, edición revisada de 1898 publicada "
+            "póstumamente. Robert Young (m. 1888) cumple vida + 95 desde 1983. "
+            "Distribución por ebible.org como dominio público."
+        ),
+        source_url="https://ebible.org/Scriptures/engylt_usfm.zip",
+        source_attribution="ebible.org · Young's Literal Translation",
+        attribution_required=False,
+        attribution_text="Young's Literal Translation · dominio público.",
+        parser="ebible_usfm",
+        source_filename="engylt_usfm.zip",
+        bundled_in_apk=False,
+    ),
+    "darby": CatalogEntry(
+        bible_id="darby",
+        display_name="Darby Translation (1890)",
+        language="en",
+        canon_family="protestant_66",
+        category="recomendado",
+        license="public_domain",
+        license_basis=(
+            "Darby Bible (1890). John Nelson Darby (m. 1882) cumple "
+            "vida + 95 desde 1977. Distribución por ebible.org como "
+            "dominio público."
+        ),
+        source_url="https://ebible.org/Scriptures/engDBY_usfm.zip",
+        source_attribution="ebible.org · Darby Translation",
+        attribution_required=False,
+        attribution_text="Darby Translation 1890 · dominio público.",
+        parser="ebible_usfm",
+        source_filename="engDBY_usfm.zip",
+        bundled_in_apk=False,
+    ),
+    "drc": CatalogEntry(
+        bible_id="drc",
+        display_name="Douay-Rheims 1899 (Challoner)",
+        language="en",
+        canon_family="catholic_73",
+        category="recomendado",
+        license="public_domain",
+        license_basis=(
+            "Douay-Rheims American Edition 1899, basada en la revisión de "
+            "Richard Challoner (m. 1781) sobre el original de 1582-1610. "
+            "Cumple vida + 95 desde 1876. Distribución por ebible.org como "
+            "dominio público."
+        ),
+        source_url="https://ebible.org/Scriptures/engDRA_usfm.zip",
+        source_attribution="ebible.org · Douay-Rheims American Edition 1899",
+        attribution_required=False,
+        attribution_text="Douay-Rheims 1899 (Challoner) · dominio público.",
+        parser="ebible_usfm",
+        source_filename="engDRA_usfm.zip",
+        bundled_in_apk=False,
+        book_ids=_CATHOLIC_73_BOOK_IDS,
+        # Esther y Daniel incluyen las adiciones deuterocanónicas inline en
+        # el USFM (capítulos extra), distinto al esquema KJV que las
+        # publica como libros separados. La numeración de capítulos puede
+        # divergir del canon protestante; suprimimos el chequeo.
+        expected_canon_complete=False,
     ),
     "wlc": CatalogEntry(
         bible_id="wlc",

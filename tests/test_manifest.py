@@ -34,6 +34,7 @@ def test_manifest_bible_entries_have_consistent_canon_family():
     for b in manifest["bibles"]:
         assert b["canon_family"] in {
             "protestant_66",
+            "protestant_66_plus_apocrypha",
             "catholic_73",
             "orthodox",
             "septuagint_only",

@@ -62,7 +62,11 @@ SKIPPED_USFM_IDS = {"FRT", "BAK", "GLO", "INT", "CNC", "TDX", "NDX", "OTH", "XXA
 
 _RE_FOOTNOTE = re.compile(r"\\f\s.*?\\f\*", re.DOTALL)
 _RE_XREF = re.compile(r"\\x\s.*?\\x\*", re.DOTALL)
-_RE_WORD = re.compile(r"\\w\s+([^|\\]+?)(?:\|[^\\]*)?\\w\*")
+# Matches both top-level (\w word|strong="..."\w*) and nested
+# (\+w word|strong="..."\+w*) word markers. The nested form appears in KJV
+# eng-kjv when \w is wrapped by another paragraph-style marker such as
+# \nd ... \nd* (Name of Deity).
+_RE_WORD = re.compile(r"\\\+?w\s+([^|\\]+?)(?:\|[^\\]*)?\\\+?w\*")
 _RE_CLOSE_TAG = re.compile(r"\\\+?\w+\*")
 _RE_OPEN_TAG = re.compile(r"\\\+?\w+\d?\s?")
 _RE_VERSE = re.compile(r"^\\v\s+(\S+)\s*(.*)$")

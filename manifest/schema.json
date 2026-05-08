@@ -54,6 +54,7 @@
           "type": "string",
           "enum": [
             "protestant_66",
+            "protestant_66_plus_apocrypha",
             "catholic_73",
             "orthodox",
             "septuagint_only",

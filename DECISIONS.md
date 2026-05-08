@@ -259,6 +259,76 @@ requiere parsers nuevos por fuente.
 
 ---
 
+## D-012 · Expansión del catálogo más allá del Doc 4: bloque inglés y español ampliado
+
+**Fecha:** 2026-05-07
+**Contexto:** El Doc 4 §1.3 fijó un catálogo de 12 textos PD con buena cobertura
+de lenguas originales pero pobre en traducciones modernas: sólo 3 versiones
+en español (RV 1909, Torres Amat, Pratt) y **cero traducciones inglesas estándar**
+(Brenton sólo cubre la LXX). La app apunta fuerte al módulo de comparación de
+traducciones, así que la pobreza relativa del español y la ausencia del inglés
+limita ese módulo desde v1.0.
+
+**Decisión:** ampliar el catálogo con un bloque inglés serio y más versiones
+históricas en español, todas PD estrictas. El catálogo objetivo pasa de 12 a
+~24 textos. Documentado en Doc 4 §1.3 (sección actualizada el 2026-05-07).
+
+**Agregados — inglés (Tier 1):**
+- King James Version 1769 + Apocrypha (`kjv`)
+- American Standard Version 1901 (`asv`)
+- Young's Literal Translation 1898 (`ylt`)
+- Darby Bible 1890 (`darby`)
+- Douay-Rheims (Challoner) (`drc`)
+
+**Agregados — inglés (Tier 2, oportunista):** Webster 1833 (`webster`),
+Revised Version 1881–85 (`rv1885`), Rotherham 1902 (`rotherham`).
+
+**Agregados — español (Tier 1):**
+- Reina "Biblia del Oso" 1569 (`reina1569`)
+- Valera 1602 (`valera1602`)
+- Scío de San Miguel 1793 (`scio`)
+
+**Agregados — español (Tier 2):** Reina-Valera 1865 (`rv1865`).
+
+**Justificación legal:** todos los autores cumplen vida+95 con margen amplio.
+La única salvedad documental es la KJV: el Reino Unido conserva *Letters Patent*
+que reservan la impresión a Cambridge / Oxford / Collins **dentro del UK**.
+Fuera del UK la KJV es PD pleno; la distribución digital global vía Play Store
+no se considera afectada por la patente real (que apunta a impresión, no a
+copia digital), tal como hacen YouVersion, Bible Gateway y demás distribuidores
+mainstream sin litigio. **Riesgo asumido: bajo.** Si hay una notificación legal
+del Crown, retiramos la KJV del manifest distribuido a UK y listo (no afecta a
+quienes ya la descargaron porque el binario está libre en cualquier jurisdicción
+no-UK).
+
+**Justificación de fuentes:** ebible.org publica USFM limpio para KJV, ASV,
+YLT, Darby, Douay-Rheims, Webster y Rotherham. El parser `ebible_usfm` ya
+existente las absorbe sin cambios. Reina 1569, Valera 1602 y Scío requieren
+parser propio (digitalizaciones de archive.org / SBT en texto plano, calidad OCR
+variable). Esos van en una segunda fase.
+
+**Distribución:** todas las nuevas Biblias van con `bundled_in_apk: false`. Se
+distribuyen como `.bb` descargables vía GitHub Releases, igual que el resto del
+catálogo. La única Biblia bundleada en el APK sigue siendo RV 1909. El usuario
+descarga las demás bajo demanda desde la pantalla de "Biblioteca".
+
+**Orden de implementación (priorizado):**
+
+1. KJV (este commit / build)
+2. ASV
+3. YLT
+4. Darby
+5. Douay-Rheims
+6. Torres Amat 1823 (parser archive.org propio)
+7. Versión Moderna (Pratt) 1893 (parser archive.org)
+8. Tischendorf VIII (parser STEPBible o archive.org)
+9. Swete LXX
+10. Vulgata Clementina (Tweedale)
+11. Reina 1569 / Valera 1602 / Scío 1793 (parsers de digitalización)
+12. Tier 2: Webster, RV 1881, Rotherham, RV 1865
+
+---
+
 ## D-009 · Versionado
 
 **Fecha:** 2026-04-28
