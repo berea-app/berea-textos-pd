@@ -40,3 +40,7 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "SIM"]
+# SIM905 reescribe ``"a\tb".split("\t")`` como ``["a","b"]``. Para fixtures
+# de test que imitan filas TSV reales (test_stepbible_tagnt) la forma con
+# split es más legible y mantiene paridad con el archivo upstream; ignoramos.
+ignore = ["SIM905"]

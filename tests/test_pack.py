@@ -61,7 +61,8 @@ def test_pack_is_valid_gzip_json(tmp_path, monkeypatch):
 
     monkeypatch.setattr(pkg, "OUTPUT_DIR", tmp_path)
     out = pack(_fake_input())
-    decoded = json.loads(gzip.open(out).read().decode("utf-8"))
+    with gzip.open(out) as f:
+        decoded = json.loads(f.read().decode("utf-8"))
     assert decoded["bible_id"] == "test1"
     assert decoded["schema_version"] == "1.0"
     assert decoded["books"][0]["book_id"] == "gen"
