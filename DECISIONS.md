@@ -329,6 +329,63 @@ descarga las demás bajo demanda desde la pantalla de "Biblioteca".
 
 ---
 
+## D-013 · Torres Amat 1823 + Vulgata Clementina 1592 vía itercatholicum
+
+**Fecha:** 2026-05-08
+**Contexto:** Después de cerrar el bloque inglés (D-012, v0.4.0), seguimos con
+los textos pendientes en español. La fuente más antigua para Torres Amat 1823
+son los nueve tomos escaneados en archive.org (1823–25), sin estructura por
+capítulo/versículo: significaría parser OCR desde cero más limpieza manual
+extensiva. Mucho costo para un solo texto.
+
+**Hallazgo:** el repo público `danloi2/itercatholicum` distribuye dos ediciones
+ya transcritas y estructuradas en JSON por libro (73 archivos cada una,
+canon católico):
+
+- `1823_torres_amat_es` — Torres Amat 1823 desde credobiblestudy.
+- `1592_vulgata_clementina_la` — Vulgata Sixto-Clementina desde Wikisource.
+
+Cada archivo declara `licentia: "Dominio Público"` o `"Public Domain"`
+y referencia su `fons`. La estructura es un dict `{capitula: [{numerus,
+versus: {n: text}}]}` trivial de parsear.
+
+**Decisión:**
+
+1. Tomar ambas ediciones como fuente y escribir un parser propio
+   `pipeline/parsers/itercatholicum_json.py`. El estatus PD de cada texto
+   está garantizado por antigüedad (Torres Amat m. 1847, Vulgata Clementina
+   1592); la licencia del repo intermedio es secundaria.
+2. **Pinear la fuente al commit `ffe943aaf0ec25dcbc0188f24471f6f6683069cc`**
+   de itercatholicum (HEAD al 2026-04-30) para reproducibilidad. Se descargan
+   los 73 archivos individuales vía `raw.githubusercontent.com/<commit>/...`
+   (byte-estable a un ref dado), no el zipball completo (que GitHub
+   re-genera con bytes distintos al re-archivar).
+3. **`source_attribution`** menciona explícitamente la cadena:
+   `danloi2/itercatholicum · <edición> · <fons>`. Atribución de cortesía,
+   no obligatoria (PD).
+4. **Pratt 1893 (Versión Moderna)** queda postergado: no hay digitalización
+   estructurada disponible; requiere parser OCR desde archive.org en sesión
+   dedicada.
+
+**Mapeo de book_id:** los IDs de itercatholicum usan abreviaturas en español
+(`ex`, `dt`, `mt`, `mc`, `lc`, `jn`, `hch`, `eclo`, `cant`, `ag`, `ap`,
+etc.). El parser los normaliza a USFM 3.0 lowercase via `_SOURCE_BOOK_ID_TO_USFM`.
+
+**Sobre la calidad del OCR:** la transcripción de Torres Amat tiene
+artefactos menores típicos del XIX digitalizado (ej. "SucediÓ" con Ó
+mayúscula errónea en 1Mac 1:1; tildes faltantes ocasionales). Aceptable;
+el texto es legible y coherente. La Vulgata Clementina viene de
+Wikisource, sin esos artefactos, con ligaduras `æ` preservadas.
+
+**Numeración de Salmos:** ambas ediciones siguen la numeración Vulgata/LXX
+(offset −1 respecto a MT en gran parte del salterio). Sal 22 TA / Vulgata
+= Sal 23 RV ("El Señor es mi pastor"). El aliasing entre numeraciones
+queda como deuda técnica; `canon/verse_alias_lxx.json` ya existe para LXX,
+falta extender a Vulgata. La app por ahora muestra cada Biblia con su
+propia numeración.
+
+---
+
 ## D-009 · Versionado
 
 **Fecha:** 2026-04-28

@@ -57,6 +57,58 @@ _CATHOLIC_73_BOOK_IDS: tuple[str, ...] = _OT_BOOK_IDS + (
     "tob", "jdt", "wis", "sir", "bar", "1ma", "2ma",
 ) + _NT_BOOK_IDS
 
+# danloi2/itercatholicum publishes Torres Amat as 73 per-book JSON files.
+# We pin to a specific commit for reproducibility: re-zipping by GitHub does
+# not affect raw.githubusercontent.com (it serves the file's bytes verbatim
+# at a given ref).
+_ITERCATHOLICUM_COMMIT = "ffe943aaf0ec25dcbc0188f24471f6f6683069cc"
+_ITERCATHOLICUM_RAW_BASE = (
+    f"https://raw.githubusercontent.com/danloi2/itercatholicum/"
+    f"{_ITERCATHOLICUM_COMMIT}/src/shared/data/bibles"
+)
+# Per-book ID stems shared by every itercatholicum edition. The full
+# filename is built as ``<NN>-<stem>-<edition_suffix>.json``.
+_ITERCATHOLICUM_BOOK_STEMS: tuple[tuple[int, str], ...] = (
+    (1, "gen"), (2, "ex"), (3, "lev"), (4, "num"), (5, "dt"),
+    (6, "jos"), (7, "jue"), (8, "rut"),
+    (9, "1sam"), (10, "2sam"), (11, "1re"), (12, "2re"),
+    (13, "1cron"), (14, "2cron"), (15, "esd"), (16, "neh"), (17, "tob"),
+    (18, "jdt"), (19, "est"), (20, "1mac"), (21, "2mac"),
+    (22, "job"), (23, "sal"), (24, "prov"), (25, "ecl"), (26, "cant"),
+    (27, "sab"), (28, "eclo"), (29, "is"), (30, "jer"), (31, "lam"),
+    (32, "bar"), (33, "ez"), (34, "dan"),
+    (35, "os"), (36, "jl"), (37, "am"), (38, "abd"), (39, "jon"),
+    (40, "miq"), (41, "nah"), (42, "hab"), (43, "sof"), (44, "ag"),
+    (45, "zac"), (46, "mal"),
+    (47, "mt"), (48, "mc"), (49, "lc"), (50, "jn"), (51, "hch"),
+    (52, "rom"), (53, "1cor"), (54, "2cor"), (55, "gal"), (56, "ef"),
+    (57, "flp"), (58, "col"), (59, "1tes"), (60, "2tes"),
+    (61, "1tim"), (62, "2tim"), (63, "tit"), (64, "flm"),
+    (65, "heb"), (66, "sant"), (67, "1pe"), (68, "2pe"),
+    (69, "1jn"), (70, "2jn"), (71, "3jn"), (72, "jds"), (73, "ap"),
+)
+
+
+def _itercatholicum_sources(edition_dir: str, suffix: str) -> tuple[
+    str, str, tuple[tuple[str, str], ...]
+]:
+    """Return (primary_url, primary_filename, extra_sources) for an edition.
+
+    ``edition_dir`` is the upstream subdirectory name under
+    ``src/shared/data/bibles/`` (e.g., ``1823_torres_amat_es``).
+    ``suffix`` is the per-edition tail of the filename without ``.json``
+    (e.g., ``ta-es`` for Torres Amat, ``vc-la`` for Vulgata Clementina).
+    """
+    base = f"{_ITERCATHOLICUM_RAW_BASE}/{edition_dir}"
+    filenames = tuple(
+        f"{n:02d}-{stem}-{suffix}.json" for n, stem in _ITERCATHOLICUM_BOOK_STEMS
+    )
+    primary = filenames[0]
+    extras = tuple(
+        (f"{base}/{name}", name) for name in filenames[1:]
+    )
+    return f"{base}/{primary}", primary, extras
+
 
 @dataclass(frozen=True)
 class CatalogEntry:
@@ -94,6 +146,76 @@ class CatalogEntry:
         if self.book_ids:
             return set(self.book_ids)
         return {b.book_id for b in load_canon_66()}
+
+
+def _torres_amat_entry() -> CatalogEntry:
+    primary_url, primary_filename, extras = _itercatholicum_sources(
+        "1823_torres_amat_es", "ta-es",
+    )
+    return CatalogEntry(
+        bible_id="torres_amat",
+        display_name="Torres Amat (1823)",
+        language="es",
+        canon_family="catholic_73",
+        category="recomendado",
+        license="public_domain",
+        license_basis=(
+            "Sagrada Biblia traducida de la Vulgata Latina al español por "
+            "Félix Torres Amat (1823). Torres Amat (m. 1847) cumple "
+            "vida + 95 desde 1942. Texto distribuido como dominio público "
+            "por la digitalización de danloi2/itercatholicum a partir de "
+            "credobiblestudy."
+        ),
+        source_url=primary_url,
+        source_attribution=(
+            "danloi2/itercatholicum · Torres Amat 1823 (es-ES) · "
+            "credobiblestudy"
+        ),
+        attribution_required=False,
+        attribution_text="Torres Amat 1823 · dominio público.",
+        parser="itercatholicum_json",
+        source_filename=primary_filename,
+        bundled_in_apk=False,
+        book_ids=_CATHOLIC_73_BOOK_IDS,
+        # Esther y Daniel pueden traer adiciones inline con numeración
+        # propia; el canon protestante de 39+27 es referencia, no exigencia.
+        expected_canon_complete=False,
+        extra_sources=extras,
+    )
+
+
+def _vulgata_clementina_entry() -> CatalogEntry:
+    primary_url, primary_filename, extras = _itercatholicum_sources(
+        "1592_vulgata_clementina_la", "vc-la",
+    )
+    return CatalogEntry(
+        bible_id="vulgata",
+        display_name="Vulgata Clementina (1592)",
+        language="la",
+        canon_family="catholic_73",
+        category="original",
+        license="public_domain",
+        license_basis=(
+            "Sixto-Clementine Vulgate, edición autoritativa de la Iglesia "
+            "Católica fijada en 1592. Texto base en dominio público por "
+            "antigüedad. Distribución a partir de la transcripción de "
+            "Wikisource (la.wikisource.org/wiki/Vulgata_Clementina), "
+            "estructurada por danloi2/itercatholicum."
+        ),
+        source_url=primary_url,
+        source_attribution=(
+            "danloi2/itercatholicum · Vulgata Clementina 1592 (la) · "
+            "Wikisource"
+        ),
+        attribution_required=False,
+        attribution_text="Vulgata Clementina 1592 · dominio público.",
+        parser="itercatholicum_json",
+        source_filename=primary_filename,
+        bundled_in_apk=False,
+        book_ids=_CATHOLIC_73_BOOK_IDS,
+        expected_canon_complete=False,
+        extra_sources=extras,
+    )
 
 
 CATALOG: dict[str, CatalogEntry] = {
@@ -387,6 +509,8 @@ CATALOG: dict[str, CatalogEntry] = {
         # divergir del canon protestante; suprimimos el chequeo.
         expected_canon_complete=False,
     ),
+    "torres_amat": _torres_amat_entry(),
+    "vulgata": _vulgata_clementina_entry(),
     "wlc": CatalogEntry(
         bible_id="wlc",
         display_name="Westminster Leningrad Codex (OSHB)",
