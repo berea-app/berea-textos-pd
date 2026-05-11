@@ -12,8 +12,8 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Alineamiento palabra-a-palabra del NT Textus Receptus (Scrivener 1894, PD) extraído del corpus TAGNT de STEPBible.org / Tyndale House Cambridge. CC BY 4.0; atribución obligatoria.",
-      "sha256": "4f56f385f1c2e210f97fe57d605f75ec4f4e2aaf04111c13c1601bf3b177a914",
-      "size_bytes": 2980746,
+      "sha256": "5c8efbf9c504d4e40c657bb9fb7029088d331c3b575bc7fc3804c111cbb73b7c",
+      "size_bytes": 2980744,
       "source": {
         "attribution": "STEPBible.org / Tyndale House Cambridge — usado bajo CC BY 4.0",
         "id": "tagnt",
@@ -35,8 +35,8 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Alineamiento palabra-a-palabra del NT Tregelles (1879, ed. Jongkind 2009) extraído del corpus TAGNT de STEPBible.org / Tyndale House Cambridge. CC BY 4.0; atribución obligatoria.",
-      "sha256": "3ec0850a80a2d21077d1f269a41908e8fcfd238336a9057bd984b4b4f9490dd4",
-      "size_bytes": 2953893,
+      "sha256": "e0b951a86a02342a662b21bcb7a7d1b668a7e645e070574e55b1a9c9befc6804",
+      "size_bytes": 2953891,
       "source": {
         "attribution": "STEPBible.org / Tyndale House Cambridge — usado bajo CC BY 4.0",
         "id": "tagnt",
@@ -58,8 +58,8 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Alineamiento palabra-a-palabra del NT Westcott-Hort (1881, PD) extraído del corpus TAGNT de STEPBible.org / Tyndale House Cambridge. Distribuido bajo Creative Commons Attribution 4.0; atribución obligatoria.",
-      "sha256": "ee4441c834f879babb2268e521e8000bb5d58e3e72784b46bd93da805ac80c30",
-      "size_bytes": 2952154,
+      "sha256": "f79a4b47e9f31484bc25a8f7f40ecaa762db38869d34d349d4e8023c0cf2f8b0",
+      "size_bytes": 2952152,
       "source": {
         "attribution": "STEPBible.org / Tyndale House Cambridge — usado bajo CC BY 4.0",
         "id": "tagnt",
@@ -81,7 +81,7 @@
       "language": "hbo",
       "license": "cc_by_4_0",
       "license_basis": "Alineamiento palabra-a-palabra del AT hebreo Leningrad + Qere (WLC moderno) extraído del corpus TAHOT de STEPBible.org / Tyndale House Cambridge. CC BY 4.0; atribución obligatoria.",
-      "sha256": "da5687f9175a28abb8a1ae4a5e2d6a1fe365877721ca72f37cf7d8792cb6124e",
+      "sha256": "7b064fb3d478b264a4ca614ed8dd7a046b911cb8079906926a147b67efa8a2b0",
       "size_bytes": 7649011,
       "source": {
         "attribution": "STEPBible.org / Tyndale House Cambridge — usado bajo CC BY 4.0",
@@ -107,7 +107,7 @@
       "license": "public_domain",
       "license_basis": "American Standard Version, publicada en 1901 (pre-1929 en EEUU y vida + 95 cumplido para todos los miembros del comité traductor). Distribución por ebible.org como dominio público.",
       "numbering_scheme": "mt",
-      "sha256": "37ff9e57a9a474c5940ef8a54a20a2e8dd4b8b43e9f352f56cd93fc1520b2716",
+      "sha256": "f77e9817dfe3ef6984cf77b92f6c7d879bf128d1de2cb40158afd0b125c40fd0",
       "size_bytes": 1312314,
       "source_attribution": "ebible.org · American Standard Version 1901",
       "source_url": "https://ebible.org/Scriptures/eng-asv_usfm.zip"
@@ -125,8 +125,8 @@
       "license": "public_domain",
       "license_basis": "Sir Lancelot C. L. Brenton, traducción inglesa de la Septuaginta publicada en 1851. Brenton (m. 1862) cumple vida + 95 desde 1957.",
       "numbering_scheme": "vulgata",
-      "sha256": "474b918fa5d9999142c840ae425c0a39fe45db0928d7677ce6bdb03077108340",
-      "size_bytes": 1265442,
+      "sha256": "920faf0b23ae88361c202fa4383c28368cae6c13f1a67b1bdaaa87e818d914cb",
+      "size_bytes": 1265445,
       "source_attribution": "ebible.org · Brenton 1851",
       "source_url": "https://ebible.org/Scriptures/eng-Brenton_usfm.zip"
     },
@@ -143,8 +143,8 @@
       "license": "public_domain",
       "license_basis": "Darby Bible (1890). John Nelson Darby (m. 1882) cumple vida + 95 desde 1977. Distribución por ebible.org como dominio público.",
       "numbering_scheme": "mt",
-      "sha256": "0544a5f7763158941e6b5e152d2236459e686e4a9a152752f307cdc21f4e563a",
-      "size_bytes": 1321004,
+      "sha256": "256880a36669b6545e29a73fd5fa07adf9b4f439f82671f48c987cd421b26435",
+      "size_bytes": 1321006,
       "source_attribution": "ebible.org · Darby Translation",
       "source_url": "https://ebible.org/Scriptures/engDBY_usfm.zip"
     },
@@ -161,7 +161,7 @@
       "license": "public_domain",
       "license_basis": "Douay-Rheims American Edition 1899, basada en la revisión de Richard Challoner (m. 1781) sobre el original de 1582-1610. Cumple vida + 95 desde 1876. Distribución por ebible.org como dominio público.",
       "numbering_scheme": "vulgata",
-      "sha256": "adcf17cea20eef0255758b407f48ffc8a0672ace4c7de3b28970bc79a930a9d7",
+      "sha256": "910fb6ab7405557fd30b67b20db1ab20d86565878884268eed34494dd9347065",
       "size_bytes": 1518401,
       "source_attribution": "ebible.org · Douay-Rheims American Edition 1899",
       "source_url": "https://ebible.org/Scriptures/engDRA_usfm.zip"
@@ -179,8 +179,8 @@
       "license": "public_domain",
       "license_basis": "King James Version, texto estandarizado de 1769, con Apócrifa. Dominio público por antigüedad fuera del Reino Unido. Dentro del UK, las Letters Patent del Crown reservan la impresión a Cambridge / Oxford / Collins; la distribución digital global no se considera afectada en la práctica. Berea distribuye el texto sin modificar.",
       "numbering_scheme": "mt",
-      "sha256": "c314bedf1f1c0d9d36613eac1832e63239ce6b7729e527e6d4f7059ef4ec872a",
-      "size_bytes": 1582339,
+      "sha256": "c4405b7e28adf6917cb42d9b329dac649eecc4ac4d42d1f4d32df312b9878bc6",
+      "size_bytes": 1582343,
       "source_attribution": "ebible.org · King James Version 1769 + Apocrypha",
       "source_url": "https://ebible.org/Scriptures/eng-kjv_usfm.zip"
     },
@@ -196,8 +196,8 @@
       "language": "grc",
       "license": "public_domain",
       "license_basis": "Eberhard Nestle (m. 1913) — la edición de 1904 cumple vida + 95 desde 2008. La curaduría morfológica de biblicalhumanities/Nestle1904 está bajo licencia abierta; Berea sólo distribuye el texto griego desnudo.",
-      "sha256": "a8f8a0553e276c0b91f79a89df67c7fc2d2bce94d41a0adc8c4c8ebbf55b7b75",
-      "size_bytes": 425887,
+      "sha256": "8efa5a31e560126692756545d3aa18b7a94055b4ebefe95d97e4cc34657ec86a",
+      "size_bytes": 425888,
       "source_attribution": "biblicalhumanities · Nestle 1904",
       "source_url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/morph/Nestle1904.csv"
     },
@@ -214,8 +214,8 @@
       "license": "public_domain",
       "license_basis": "Edición de 1909, dominio público en jurisdicciones que aplican vida + 95. Cipriano de Valera (m. 1602) y Casiodoro de Reina (m. 1594) están en PD por edad.",
       "numbering_scheme": "mt",
-      "sha256": "484b899953d54ea114ad333c73f139c6ceae1cbe3fcba5c3736ee800bedc5af8",
-      "size_bytes": 1340736,
+      "sha256": "e9b9b178fcade2c675c3d89a1c7e95765fef6370a7faeace6a8a065937dbadd6",
+      "size_bytes": 1340741,
       "source_attribution": "ebible.org · Reina-Valera 1909",
       "source_url": "https://ebible.org/Scriptures/spaRV1909_usfm.zip"
     },
@@ -232,8 +232,8 @@
       "license": "public_domain",
       "license_basis": "Sagrada Biblia traducida de la Vulgata Latina al español por Félix Torres Amat (1823). Torres Amat (m. 1847) cumple vida + 95 desde 1942. Texto distribuido como dominio público por la digitalización de danloi2/itercatholicum a partir de credobiblestudy.",
       "numbering_scheme": "vulgata",
-      "sha256": "91ab960a3c24b93f454ed6268b20a549eb5b136537c25eab84061eeca484be23",
-      "size_bytes": 1804090,
+      "sha256": "d046a6da04da73ebf2f9722c3d9eeb46579a70a4654ee5ea0aed355dbb3acb70",
+      "size_bytes": 1804091,
       "source_attribution": "danloi2/itercatholicum · Torres Amat 1823 (es-ES) · credobiblestudy",
       "source_url": "https://raw.githubusercontent.com/danloi2/itercatholicum/ffe943aaf0ec25dcbc0188f24471f6f6683069cc/src/shared/data/bibles/1823_torres_amat_es/01-gen-ta-es.json"
     },
@@ -249,8 +249,8 @@
       "language": "grc",
       "license": "public_domain",
       "license_basis": "Textus Receptus griego, dominio público por antigüedad. Anotaciones de manuscritos por Adam Boyd, dedicadas a PD.",
-      "sha256": "7d253c5852a5318f5fbf32164160d29328ffc8ff1d7dc3fc6fc13646db978b08",
-      "size_bytes": 432480,
+      "sha256": "47a2ddaa5e3606e9c27091b35e2d04d0dad58ebe8857365b296863e23814ce5f",
+      "size_bytes": 432482,
       "source_attribution": "ebible.org · Textus Receptus (Adam Boyd)",
       "source_url": "https://ebible.org/Scriptures/grctr_usfm.zip"
     },
@@ -266,7 +266,7 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Texto base: Tregelles 1879 (vida + 95 desde 1970), edición completada por Jongkind 2009. Distribución vía STEPBible/Tyndale House bajo CC BY 4.0; atribución obligatoria.",
-      "sha256": "6aa763ab066b33dec4316b2bf635cbcb77b3b1d8266398a76934a695ce04fe21",
+      "sha256": "28af6341539a57350fe65aa3f3b35f4f8fe7c2a147c6b73889237836f9222e5e",
       "size_bytes": 423071,
       "source_attribution": "STEPBible.org / Tyndale House Cambridge — TAGNT (CC BY 4.0)",
       "source_url": "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/Translators%20Amalgamated%20OT%2BNT/TAGNT%20Mat-Jhn%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20STEPBible.org%20CC-BY.txt"
@@ -284,8 +284,8 @@
       "license": "public_domain",
       "license_basis": "Sixto-Clementine Vulgate, edición autoritativa de la Iglesia Católica fijada en 1592. Texto base en dominio público por antigüedad. Distribución a partir de la transcripción de Wikisource (la.wikisource.org/wiki/Vulgata_Clementina), estructurada por danloi2/itercatholicum.",
       "numbering_scheme": "vulgata",
-      "sha256": "196b2ce4e38f3f54a2659fe60c6e09ff348ed2f466b829a367571182c1c0497d",
-      "size_bytes": 1508545,
+      "sha256": "6cf8e3797a7e466a900d79eca32a4ad1db95478f23a6e1952f4c9b0f67cb42ab",
+      "size_bytes": 1508546,
       "source_attribution": "danloi2/itercatholicum · Vulgata Clementina 1592 (la) · Wikisource",
       "source_url": "https://raw.githubusercontent.com/danloi2/itercatholicum/ffe943aaf0ec25dcbc0188f24471f6f6683069cc/src/shared/data/bibles/1592_vulgata_clementina_la/01-gen-vc-la.json"
     },
@@ -301,8 +301,8 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Texto base: Westcott + Hort 1881 (vida + 95 desde 1996). Distribuido por STEPBible/Tyndale House con licencia Creative Commons Attribution 4.0; la atribución a STEPBible es obligatoria.",
-      "sha256": "d266a48d993d51534dfa77b48a9cc61e2083d13c4fb6652a4e837542a43ec72c",
-      "size_bytes": 423030,
+      "sha256": "b3fa970402285a9af0b36e89922b6705cd65066489dd63dd6bc0d7948101a0e5",
+      "size_bytes": 423032,
       "source_attribution": "STEPBible.org / Tyndale House Cambridge — TAGNT (CC BY 4.0)",
       "source_url": "https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/Translators%20Amalgamated%20OT%2BNT/TAGNT%20Mat-Jhn%20-%20Translators%20Amalgamated%20Greek%20NT%20-%20STEPBible.org%20CC-BY.txt"
     },
@@ -319,8 +319,8 @@
       "license": "cc_by_4_0",
       "license_basis": "Texto del WLC en dominio público; morfología y datos OSHB bajo Creative Commons Attribution 4.0 (CC BY 4.0). La atribución se refleja en el manifest y en la pantalla Sobre Berea de la app.",
       "numbering_scheme": "mt",
-      "sha256": "11cc3da9e137db170614fa1d95d9abe9f7259df6a8014f15883cc970985e35a7",
-      "size_bytes": 1407859,
+      "sha256": "2c1dd8bd7b618897faf470170f79782c9b36a0bc09be97d662a9daa457bd02a4",
+      "size_bytes": 1407860,
       "source_attribution": "Open Scriptures Hebrew Bible v2.2 (CC BY 4.0)",
       "source_url": "https://github.com/openscriptures/morphhb/releases/download/v.2.2/OSHB-v.2.2.zip"
     },
@@ -337,8 +337,8 @@
       "license": "public_domain",
       "license_basis": "Young's Literal Translation, edición revisada de 1898 publicada póstumamente. Robert Young (m. 1888) cumple vida + 95 desde 1983. Distribución por ebible.org como dominio público.",
       "numbering_scheme": "mt",
-      "sha256": "f5d065854f39b03158c8add35dccd72d8829661c38e88ccd1f10611da1f8b0e7",
-      "size_bytes": 1319317,
+      "sha256": "1711f3f617f09603af87ab182c5f79ea45c898bf41c4720f7b6738a8caeffb92",
+      "size_bytes": 1319321,
       "source_attribution": "ebible.org · Young's Literal Translation",
       "source_url": "https://ebible.org/Scriptures/engylt_usfm.zip"
     }
@@ -355,7 +355,7 @@
       "language": "grc",
       "license": "mixed",
       "license_basis": "Combina STEPBible Brief Lexicon for Greek (TBESG) bajo Creative Commons Attribution 4.0 con el Strong's Greek Dictionary (1890) en dominio público / CC0 vía OpenScriptures. La atribución a STEPBible / Tyndale House Cambridge es obligatoria.",
-      "sha256": "6cd7f1919607de9ff914d6cd3f7a0cb6618a528c94fb6406fe981587de3c595c",
+      "sha256": "79ea7cc3e848ad4d00f1720b56310da74bb16a12e22042f973be0d6451a248e8",
       "size_bytes": 1771117,
       "sources": [
         {
@@ -385,7 +385,7 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Liddell-Scott-Jones Greek-English Lexicon en dominio público por antigüedad; el formateo del TFLSJ por Tyndale House / STEPBible.org se distribuye bajo Creative Commons Attribution 4.0, con atribución obligatoria. Descarga opcional por su tamaño (~7.6 MB comprimido).",
-      "sha256": "e1a1dab29f3435d7b710090d4cc3b8387e1a9002a7c9de83087ff965a5ac12b9",
+      "sha256": "4a9edea933e2da432f16b6ab1895ce01b7665565449ec4bf9a19bccdbc128a85",
       "size_bytes": 7631472,
       "sources": [
         {
@@ -408,8 +408,8 @@
       "language": "hbo",
       "license": "cc_by_4_0",
       "license_basis": "Combina STEPBible Brief Lexicon for Hebrew (TBESH) y el Brown-Driver-Briggs Hebrew Lexicon (1906, dominio público) digitalizado por Open Scriptures Hebrew Bible. Ambas fuentes se distribuyen bajo Creative Commons Attribution 4.0; atribución obligatoria.",
-      "sha256": "7ff0cd31075d6efb27834b93b70d20d683f7afee7733537af5d4076d3e9bf53a",
-      "size_bytes": 1225111,
+      "sha256": "bf05a6c2e32725e9ad7cda1dda0a98a39fd91cc5a4f3a33b2c01254dc4ef0180",
+      "size_bytes": 1225110,
       "sources": [
         {
           "attribution": "STEPBible.org / Tyndale House Cambridge — usado bajo CC BY 4.0",
