@@ -8,7 +8,7 @@ on:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     permissions:
       contents: write
 
@@ -23,21 +23,30 @@ jobs:
       - name: Install dependencies
         run: pip install -e ".[dev]"
 
+      - name: Download STEPBible / openscriptures sources
+        run: bash scripts/download_stepbible.sh
+
+      - name: Build lexicons and alignments
+        env:
+          BEREA_FAKE_NOW: "2026-05-11T21:00:00-03:00"
+        run: python -m pipeline.lexicon.build all
+
       - name: Regenerate numbering alias dataset
         run: python scripts/gen_numbering_alias.py
 
       - name: Build every Bible
         env:
-          BEREA_FAKE_NOW: "2026-04-28T00:00:00-03:00"
+          BEREA_FAKE_NOW: "2026-05-11T21:00:00-03:00"
         run: python -m pipeline.cli build --all
 
       - name: Verify reproducibility
         env:
-          BEREA_FAKE_NOW: "2026-04-28T00:00:00-03:00"
+          BEREA_FAKE_NOW: "2026-05-11T21:00:00-03:00"
         run: |
           mkdir -p /tmp/first
           cp output/*.bb /tmp/first/
           rm -f output/*.bb
+          python -m pipeline.lexicon.build all
           python -m pipeline.cli build --all
           for f in output/*.bb; do
             name=$(basename "$f")
