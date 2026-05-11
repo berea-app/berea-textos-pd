@@ -19,11 +19,143 @@ from .verify import VerifyReport, verify
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = REPO_ROOT / "manifest" / "manifest.json"
-MANIFEST_SCHEMA_VERSION = "1.2"
+MANIFEST_SCHEMA_VERSION = "1.3"
 RELEASE_DOWNLOAD_BASE = (
     "https://github.com/berea-app/berea-textos-pd/releases/latest/download"
 )
 NUMBERING_ALIAS_PATH = REPO_ROOT / "canon" / "numbering_alias.json"
+
+
+# ---------------------------------------------------------------------------
+# Metadatos por target léxico / alineamiento (v1.5)
+#
+# La descripción legal (license_basis), categoría, attribution_required y
+# license agregada del .bb viven acá — el .bb mismo solo lleva las atribuciones
+# por fuente. El manifest los compone para la pantalla "Datos de léxico".
+# ---------------------------------------------------------------------------
+
+
+_LEXICON_MANIFEST_META: dict[str, dict] = {
+    "lexicon_grc": {
+        "category": "recomendado",
+        "license": "mixed",
+        "license_basis": (
+            "Combina STEPBible Brief Lexicon for Greek (TBESG) bajo "
+            "Creative Commons Attribution 4.0 con el Strong's Greek "
+            "Dictionary (1890) en dominio público / CC0 vía OpenScriptures. "
+            "La atribución a STEPBible / Tyndale House Cambridge es "
+            "obligatoria."
+        ),
+        "attribution_required": True,
+        "attribution_text": (
+            "Léxico griego: STEPBible.org / Tyndale House Cambridge (CC BY 4.0) "
+            "+ Strong's Greek Dictionary (1890, PD/CC0 vía OpenScriptures)."
+        ),
+        "bundled_in_apk": False,
+    },
+    "lexicon_grc_lsj": {
+        "category": "avanzado",
+        "license": "cc_by_4_0",
+        "license_basis": (
+            "Liddell-Scott-Jones Greek-English Lexicon en dominio público "
+            "por antigüedad; el formateo del TFLSJ por Tyndale House / "
+            "STEPBible.org se distribuye bajo Creative Commons Attribution "
+            "4.0, con atribución obligatoria. Descarga opcional por su "
+            "tamaño (~7.6 MB comprimido)."
+        ),
+        "attribution_required": True,
+        "attribution_text": (
+            "Léxico LSJ completo: Liddell-Scott-Jones (PD) formateado por "
+            "STEPBible.org / Tyndale House Cambridge (CC BY 4.0)."
+        ),
+        "bundled_in_apk": False,
+    },
+    "lexicon_hbo": {
+        "category": "recomendado",
+        "license": "cc_by_4_0",
+        "license_basis": (
+            "Combina STEPBible Brief Lexicon for Hebrew (TBESH) y el "
+            "Brown-Driver-Briggs Hebrew Lexicon (1906, dominio público) "
+            "digitalizado por Open Scriptures Hebrew Bible. Ambas fuentes "
+            "se distribuyen bajo Creative Commons Attribution 4.0; "
+            "atribución obligatoria."
+        ),
+        "attribution_required": True,
+        "attribution_text": (
+            "Léxico hebreo: STEPBible.org / Tyndale House Cambridge "
+            "(TBESH, CC BY 4.0) + Brown-Driver-Briggs (1906, PD; "
+            "digitalización CC BY 4.0 por Open Scriptures Hebrew Bible)."
+        ),
+        "bundled_in_apk": False,
+    },
+}
+
+
+_ALIGNMENT_MANIFEST_META: dict[str, dict] = {
+    "alignment_grc_nt_wh": {
+        "category": "original",
+        "license": "cc_by_4_0",
+        "license_basis": (
+            "Alineamiento palabra-a-palabra del NT Westcott-Hort (1881, PD) "
+            "extraído del corpus TAGNT de STEPBible.org / Tyndale House "
+            "Cambridge. Distribuido bajo Creative Commons Attribution 4.0; "
+            "atribución obligatoria."
+        ),
+        "attribution_required": True,
+        "attribution_text": (
+            "Alineamiento NT WH: STEPBible.org / Tyndale House Cambridge — "
+            "TAGNT (CC BY 4.0)."
+        ),
+        "bundled_in_apk": False,
+    },
+    "alignment_grc_nt_tregelles": {
+        "category": "original",
+        "license": "cc_by_4_0",
+        "license_basis": (
+            "Alineamiento palabra-a-palabra del NT Tregelles (1879, ed. "
+            "Jongkind 2009) extraído del corpus TAGNT de STEPBible.org / "
+            "Tyndale House Cambridge. CC BY 4.0; atribución obligatoria."
+        ),
+        "attribution_required": True,
+        "attribution_text": (
+            "Alineamiento NT Tregelles: STEPBible.org / Tyndale House "
+            "Cambridge — TAGNT (CC BY 4.0)."
+        ),
+        "bundled_in_apk": False,
+    },
+    "alignment_grc_nt_tr": {
+        "category": "original",
+        "license": "cc_by_4_0",
+        "license_basis": (
+            "Alineamiento palabra-a-palabra del NT Textus Receptus "
+            "(Scrivener 1894, PD) extraído del corpus TAGNT de "
+            "STEPBible.org / Tyndale House Cambridge. CC BY 4.0; "
+            "atribución obligatoria."
+        ),
+        "attribution_required": True,
+        "attribution_text": (
+            "Alineamiento NT TR: STEPBible.org / Tyndale House Cambridge — "
+            "TAGNT (CC BY 4.0)."
+        ),
+        "bundled_in_apk": False,
+    },
+    "alignment_hbo_ot_wlc": {
+        "category": "original",
+        "license": "cc_by_4_0",
+        "license_basis": (
+            "Alineamiento palabra-a-palabra del AT hebreo "
+            "Leningrad + Qere (WLC moderno) extraído del corpus TAHOT de "
+            "STEPBible.org / Tyndale House Cambridge. CC BY 4.0; "
+            "atribución obligatoria."
+        ),
+        "attribution_required": True,
+        "attribution_text": (
+            "Alineamiento AT WLC: STEPBible.org / Tyndale House Cambridge — "
+            "TAHOT (CC BY 4.0)."
+        ),
+        "bundled_in_apk": False,
+    },
+}
 
 
 def _git_commit() -> str:
@@ -99,6 +231,126 @@ def build_one(bible_id: str) -> tuple[Path, VerifyReport]:
     return out, report
 
 
+def _source_for_manifest(source: dict) -> dict:
+    """Reduce el dict ``LexiconSource``/``AlignmentSource`` del .bb a los
+    campos que el manifest expone. Descarta ``source_sha256`` (detalle de
+    trazabilidad interno; no es útil en la UI de la app)."""
+    return {
+        "id": source["id"],
+        "name": source["name"],
+        "license": source["license"],
+        "attribution": source["attribution"],
+        "source_url": source["source_url"],
+    }
+
+
+def _build_lexicons_array() -> list[dict]:
+    """Genera el array ``lexicons[]`` del manifest leyendo los .bb existentes
+    en ``output/``. Si un target no fue construido todavía, su sha/size son
+    ``"TBD"`` / ``0`` (mismo patrón que ``bibles[]``)."""
+    from .lexicon.build import LEXICON_TARGETS
+    from .lexicon.pack import OUTPUT_DIR as LEX_OUTPUT_DIR
+    from .lexicon.pack import read_lexicon_bb
+
+    out: list[dict] = []
+    for data_id, target in LEXICON_TARGETS.items():
+        meta = _LEXICON_MANIFEST_META.get(data_id)
+        if meta is None:
+            raise RuntimeError(
+                f"_LEXICON_MANIFEST_META falta entrada para {data_id!r}"
+            )
+        bb_path = LEX_OUTPUT_DIR / f"{data_id}.bb"
+        if bb_path.exists():
+            sha = sha256_of(bb_path)
+            size = bb_path.stat().st_size
+            payload = read_lexicon_bb(bb_path)
+            sources = [_source_for_manifest(s) for s in payload["sources"]]
+        else:
+            sha, size = "TBD", 0
+            # Sin .bb no podemos enumerar las fuentes reales — dejamos una
+            # entry mínima derivada del attribution_text del meta para que
+            # la app no rompa si valida estrictamente.
+            sources = [
+                {
+                    "id": "pending",
+                    "name": "(pendiente de build)",
+                    "license": "unknown",
+                    "attribution": meta["attribution_text"],
+                    "source_url": "https://github.com/berea-app/berea-textos-pd",
+                }
+            ]
+        out.append(
+            {
+                "attribution_required": meta["attribution_required"],
+                "attribution_text": meta["attribution_text"],
+                "bundled_in_apk": meta["bundled_in_apk"],
+                "category": meta["category"],
+                "data_id": data_id,
+                "display_name": target.display_name,
+                "download_url": f"{RELEASE_DOWNLOAD_BASE}/{data_id}.bb",
+                "language": target.language,
+                "license": meta["license"],
+                "license_basis": meta["license_basis"],
+                "sha256": sha,
+                "size_bytes": size,
+                "sources": sources,
+            }
+        )
+    out.sort(key=lambda e: e["data_id"])
+    return out
+
+
+def _build_alignments_array() -> list[dict]:
+    """Genera el array ``alignments[]`` del manifest leyendo los .bb existentes."""
+    from .lexicon.build import ALIGNMENT_TARGETS
+    from .lexicon.pack import OUTPUT_DIR as LEX_OUTPUT_DIR
+    from .lexicon.pack import read_alignment_bb
+
+    out: list[dict] = []
+    for data_id, target in ALIGNMENT_TARGETS.items():
+        meta = _ALIGNMENT_MANIFEST_META.get(data_id)
+        if meta is None:
+            raise RuntimeError(
+                f"_ALIGNMENT_MANIFEST_META falta entrada para {data_id!r}"
+            )
+        bb_path = LEX_OUTPUT_DIR / f"{data_id}.bb"
+        if bb_path.exists():
+            sha = sha256_of(bb_path)
+            size = bb_path.stat().st_size
+            payload = read_alignment_bb(bb_path)
+            source = _source_for_manifest(payload["source"])
+        else:
+            sha, size = "TBD", 0
+            source = {
+                "id": "pending",
+                "name": "(pendiente de build)",
+                "license": "unknown",
+                "attribution": meta["attribution_text"],
+                "source_url": "https://github.com/berea-app/berea-textos-pd",
+            }
+        out.append(
+            {
+                "attribution_required": meta["attribution_required"],
+                "attribution_text": meta["attribution_text"],
+                "bible_id": target.bible_id,
+                "bundled_in_apk": meta["bundled_in_apk"],
+                "category": meta["category"],
+                "data_id": data_id,
+                "display_name": target.display_name,
+                "download_url": f"{RELEASE_DOWNLOAD_BASE}/{data_id}.bb",
+                "language": target.language,
+                "license": meta["license"],
+                "license_basis": meta["license_basis"],
+                "sha256": sha,
+                "size_bytes": size,
+                "source": source,
+                "testament": target.testament,
+            }
+        )
+    out.sort(key=lambda e: e["data_id"])
+    return out
+
+
 def regenerate_manifest() -> Path:
     """Rebuild manifest from CATALOG plus actual SHA-256/size of any built .bb."""
     bibles = []
@@ -150,6 +402,8 @@ def regenerate_manifest() -> Path:
         "schema_version": MANIFEST_SCHEMA_VERSION,
         "updated_at": _now_iso(),
         "bibles": bibles,
+        "lexicons": _build_lexicons_array(),
+        "alignments": _build_alignments_array(),
     }
     if numbering_alias_meta is not None:
         payload["numbering_alias"] = numbering_alias_meta

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://berea.app/schemas/manifest-1.2.json",
+  "$id": "https://berea.app/schemas/manifest-1.3.json",
   "title": "Berea PD Texts Manifest",
   "type": "object",
   "required": ["schema_version", "updated_at", "bibles"],
@@ -9,7 +9,7 @@
     "schema_version": {
       "type": "string",
       "pattern": "^[0-9]+\\.[0-9]+$",
-      "description": "Manifest schema version. App v1.0 reads >= 1.0."
+      "description": "Manifest schema version. App v1.0 reads >= 1.0. v1.5 adds lexicons[] and alignments[] (schema 1.3)."
     },
     "updated_at": {
       "type": "string",
@@ -18,6 +18,16 @@
     "bibles": {
       "type": "array",
       "items": { "$ref": "#/$defs/Bible" }
+    },
+    "lexicons": {
+      "type": "array",
+      "description": "Lexical data files (v1.5+). Optional — older app versions ignore this field.",
+      "items": { "$ref": "#/$defs/Lexicon" }
+    },
+    "alignments": {
+      "type": "array",
+      "description": "Word-level alignment data (v1.5+) linking biblical text positions to lemma/Strong/morph. Optional.",
+      "items": { "$ref": "#/$defs/Alignment" }
     },
     "numbering_alias": {
       "$ref": "#/$defs/NumberingAlias"
@@ -89,6 +99,156 @@
           "enum": ["mt", "vulgata"],
           "description": "Numbering scheme used by this edition. Only present when applicable (omitted for NT-only editions where the divergence does not arise)."
         }
+      }
+    },
+    "Lexicon": {
+      "type": "object",
+      "description": "Datos léxicos por idioma original (griego, hebreo). Cada entrada describe un .bb gzipped JSON con definiciones lemma+Strong+gloss+definición completa.",
+      "required": [
+        "data_id",
+        "display_name",
+        "language",
+        "category",
+        "license",
+        "license_basis",
+        "attribution_required",
+        "attribution_text",
+        "sources",
+        "download_url",
+        "sha256",
+        "size_bytes",
+        "bundled_in_apk"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "data_id": {
+          "type": "string",
+          "pattern": "^lexicon_[a-z0-9_]+$",
+          "description": "Identificador único: lexicon_grc, lexicon_grc_lsj, lexicon_hbo."
+        },
+        "display_name": { "type": "string" },
+        "language": {
+          "type": "string",
+          "enum": ["grc", "hbo"],
+          "description": "ISO 639-3 del idioma original que describe el lexicón."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["recomendado", "avanzado"],
+          "description": "'recomendado' para léxicos breves base, 'avanzado' para LSJ completo (opcional, gran tamaño)."
+        },
+        "license": {
+          "type": "string",
+          "enum": ["public_domain", "cc_by_4_0", "cc_by_sa_4_0", "mixed", "other"],
+          "description": "License agregada del .bb. 'mixed' indica varias licencias entre las fuentes (típico cuando combina CC BY 4.0 + CC0)."
+        },
+        "license_basis": { "type": "string" },
+        "attribution_required": {
+          "type": "boolean",
+          "description": "true si CUALQUIER fuente del .bb requiere atribución (p.ej. CC BY 4.0)."
+        },
+        "attribution_text": {
+          "type": "string",
+          "description": "Texto compuesto listo para mostrar en bottom sheet léxico (footer 'Fuentes: ...')."
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Fuentes que contribuyen entries al lexicón. Espejo del array sources[] dentro del header del .bb.",
+          "items": { "$ref": "#/$defs/LexicalSource" }
+        },
+        "download_url": { "type": "string", "format": "uri" },
+        "sha256": {
+          "type": "string",
+          "pattern": "^([a-f0-9]{64}|TBD)$"
+        },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "bundled_in_apk": { "type": "boolean" }
+      }
+    },
+    "Alignment": {
+      "type": "object",
+      "description": "Alineamiento palabra-a-palabra entre una Biblia (bible_id) y datos léxicos (lemma, Strong, morph, glosa).",
+      "required": [
+        "data_id",
+        "display_name",
+        "language",
+        "testament",
+        "bible_id",
+        "category",
+        "license",
+        "license_basis",
+        "attribution_required",
+        "attribution_text",
+        "source",
+        "download_url",
+        "sha256",
+        "size_bytes",
+        "bundled_in_apk"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "data_id": {
+          "type": "string",
+          "pattern": "^alignment_[a-z0-9_]+$",
+          "description": "Identificador único: alignment_grc_nt_wh, alignment_grc_nt_tregelles, alignment_grc_nt_tr, alignment_hbo_ot_wlc."
+        },
+        "display_name": { "type": "string" },
+        "language": {
+          "type": "string",
+          "enum": ["grc", "hbo"]
+        },
+        "testament": {
+          "type": "string",
+          "enum": ["nt", "ot"]
+        },
+        "bible_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$",
+          "description": "Biblia del catálogo a la que aplica este alineamiento. Debe coincidir con un bibles[].bible_id."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["recomendado", "original"]
+        },
+        "license": {
+          "type": "string",
+          "enum": ["public_domain", "cc_by_4_0", "cc_by_sa_4_0", "mixed", "other"]
+        },
+        "license_basis": { "type": "string" },
+        "attribution_required": { "type": "boolean" },
+        "attribution_text": { "type": "string" },
+        "source": {
+          "$ref": "#/$defs/LexicalSource",
+          "description": "Fuente única del alineamiento (TAGNT o TAHOT)."
+        },
+        "download_url": { "type": "string", "format": "uri" },
+        "sha256": {
+          "type": "string",
+          "pattern": "^([a-f0-9]{64}|TBD)$"
+        },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "bundled_in_apk": { "type": "boolean" }
+      }
+    },
+    "LexicalSource": {
+      "type": "object",
+      "description": "Una fuente upstream que contribuye datos a un .bb léxico o de alineamiento.",
+      "required": ["id", "name", "license", "attribution", "source_url"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$",
+          "description": "Identificador estable: stepbible, strongs, bdb, lsj, tagnt, tahot."
+        },
+        "name": { "type": "string" },
+        "license": {
+          "type": "string",
+          "description": "Texto libre con la licencia exacta de la fuente (e.g. 'CC BY 4.0', 'CC0 (public_domain)')."
+        },
+        "attribution": { "type": "string" },
+        "source_url": { "type": "string", "format": "uri" }
       }
     },
     "NumberingAlias": {
