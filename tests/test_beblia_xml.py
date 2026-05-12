@@ -35,7 +35,7 @@ FIXTURE_XML = """<?xml version="1.0" encoding="UTF-8"?>
     </book>
     <book number="66">
       <chapter number="22">
-        <verse number="21">La gracia de nuestro Señor Jesucristo sea con todos vosotros. Amén.</verse>
+        <verse number="21">Gracia sea con todos. Amén.</verse>
       </chapter>
     </book>
   </testament>
