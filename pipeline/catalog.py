@@ -248,6 +248,40 @@ CATALOG: dict[str, CatalogEntry] = {
         bundled_in_apk=True,
         numbering_scheme="mt",
     ),
+    "ses1569": CatalogEntry(
+        bible_id="ses1569",
+        display_name="Sagradas Escrituras (Reina 1569)",
+        language="es",
+        canon_family="protestant_66",
+        category="recomendado",
+        license="public_domain",
+        license_basis=(
+            "Sagradas Escrituras de Casiodoro de Reina (1569, \"Biblia del "
+            "Oso\"), primera traducción completa de la Biblia al castellano. "
+            "Reina (m. 1594) cumple vida + 95 desde 1689. La digitalización "
+            "distribuida por Beblia/Holy-Bible-XML-Format presenta el texto "
+            "con regularización ortográfica moderna (uso de \"SEÑOR\" en "
+            "lugar de \"Iehoua\", grafía actualizada) y omite los libros "
+            "deuterocanónicos que sí incluía el original; se distribuye como "
+            "dominio público."
+        ),
+        source_url=(
+            "https://raw.githubusercontent.com/Beblia/Holy-Bible-XML-Format/"
+            "edc4c6fddf711a7bd97e248536b746cdc7fa549f/Spanish1569Bible.xml"
+        ),
+        source_attribution=(
+            "Beblia/Holy-Bible-XML-Format · Sagradas Escrituras Reina 1569 "
+            "(regularización ortográfica moderna)"
+        ),
+        attribution_required=False,
+        attribution_text=(
+            "Sagradas Escrituras (Reina 1569) · dominio público."
+        ),
+        parser="beblia_xml",
+        source_filename="Spanish1569Bible.xml",
+        bundled_in_apk=False,
+        numbering_scheme="mt",
+    ),
     "tr": CatalogEntry(
         bible_id="tr",
         display_name="Textus Receptus (NT)",
