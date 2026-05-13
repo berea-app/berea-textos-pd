@@ -61,41 +61,50 @@ class TestStrongsGreekUnit:
         assert e.strong_extended == "G25"
         assert _nfc(e.lemma) == _nfc("ἀγαπάω")
         assert e.transliteration == "agapáō"
-        assert e.gloss_brief == "love"  # extracted from kjv_def, paréntesis quitados
+        # gloss_brief siempre None desde Strong's — la lista ``kjv_def`` es
+        # alfabética y el primer ítem suele ser engañoso (account/X exceeding).
+        assert e.gloss_brief is None
         assert e.definition_full is not None and "to love" in e.definition_full
         assert "perhaps from" in e.definition_full  # derivation appended
         assert e.language == "grc"
         assert e.source == "strongs"
         assert e.morph is None  # Strong's no trae morfología
 
-    def test_glosa_se_extrae_del_primer_kjv_def(self, tmp_path):
-        """``kjv_def: "agree, assure, believe"`` → gloss_brief = "agree"."""
+    def test_gloss_brief_es_None_aunque_kjv_def_tenga_items(self, tmp_path):
+        """Aun con ``kjv_def`` poblado dejamos ``gloss_brief=None`` — para
+        evitar el sesgo alfabético (G3056 ``account`` vs ``word``). La glosa
+        breve la aporta la card STEPBible/BDB."""
         body = (
-            '{"G3982":{'
-            '"lemma":"πείθω","translit":"peíthō",'
-            '"kjv_def":"agree, assure, believe, have confidence",'
-            '"strongs_def":" to convince","derivation":"primary"}}'
+            '{"G3056":{'
+            '"lemma":"λόγος","translit":"lógos",'
+            '"kjv_def":"account, cause, communication, ..., word, work",'
+            '"strongs_def":" something said","derivation":"from G3004"}}'
         )
         path = self._write(tmp_path, body)
         e = next(iter(parse_strongs_greek_file(path)))
-        assert e.gloss_brief == "agree"
-
-    def test_quita_parentesis_decorativos_de_glosa(self, tmp_path):
-        body = (
-            '{"G25":{'
-            '"lemma":"ἀγαπάω","translit":"agapáō",'
-            '"kjv_def":"(be-)love(-ed)",'
-            '"strongs_def":" to love","derivation":""}}'
-        )
-        path = self._write(tmp_path, body)
-        e = next(iter(parse_strongs_greek_file(path)))
-        assert e.gloss_brief == "love"
+        assert e.gloss_brief is None
+        # La definición larga sigue trayendo el valor real de la card.
+        assert "something said" in (e.definition_full or "")
 
     def test_descarta_entries_sin_lemma(self, tmp_path):
         body = (
             '{"G99999":{'
             '"lemma":"",'  # vacío
             '"kjv_def":"x","strongs_def":"y","derivation":"","translit":""},'
+            '"G25":{"lemma":"ἀγαπάω","translit":"agapáō",'
+            '"kjv_def":"love","strongs_def":" to love","derivation":""}}'
+        )
+        path = self._write(tmp_path, body)
+        entries = list(parse_strongs_greek_file(path))
+        assert len(entries) == 1
+        assert entries[0].strong_base == "G25"
+
+    def test_descarta_entries_sin_strongs_def(self, tmp_path):
+        """Sin definición larga la card de Strong's no aporta nada que
+        STEPBible/BDB no cubran ya — skip silencioso."""
+        body = (
+            '{"G99998":{"lemma":"foo","translit":"foo",'
+            '"kjv_def":"x","strongs_def":"","derivation":""},'
             '"G25":{"lemma":"ἀγαπάω","translit":"agapáō",'
             '"kjv_def":"love","strongs_def":" to love","derivation":""}}'
         )
@@ -139,7 +148,9 @@ class TestStrongsGreekReal:
         assert len(matches) == 1
         e = matches[0]
         assert _nfc(e.lemma) == _nfc("ἀγαπάω")
-        assert "love" in e.gloss_brief.lower()
+        # gloss_brief no se rellena desde Strong's (ver test unitario);
+        # la card aporta valor con la definición larga.
+        assert e.gloss_brief is None
         assert e.definition_full and "love" in e.definition_full.lower()
 
     def test_spot_check_logos(self, entries):

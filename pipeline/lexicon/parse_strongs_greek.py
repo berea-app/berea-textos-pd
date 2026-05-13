@@ -27,7 +27,12 @@ El mapeo a ``BriefLexiconEntry``:
 - ``strong_extended`` ← idem (Strong's original no desambigua entre acepciones,
   así que base == extended siempre).
 - ``lemma`` / ``transliteration`` ← directos.
-- ``gloss_brief`` ← primera glosa de ``kjv_def`` (lo que KJV traduce).
+- ``gloss_brief`` ← **siempre None**. Strong's upstream lista las traducciones
+  KJV ordenadas alfabéticamente, no por frecuencia, así que el primer ítem
+  suele ser engañoso (``G3056 λόγος`` → ``"account"`` en vez de ``"word"``;
+  ``G2316 Θεός`` → ``"X exceeding"``; ``G2962 κύριος`` → ``"God"``). La
+  glosa breve la provee STEPBible/BDB (cards a la par); la card de Strong's
+  aporta valor con la definición larga y la etimología, no con la glosa.
 - ``definition_full`` ← ``strongs_def`` completo (la definición tipo Thayer).
 """
 
@@ -49,28 +54,14 @@ _JS_WRAPPER_RE = re.compile(
 )
 
 
-def _extract_first_gloss(kjv_def: str) -> str:
-    """``kjv_def`` es la lista KJV-style de cómo se traduce la palabra:
-    ``"agree, assure, believe, have confidence, ..."``. Para una glosa breve
-    tomamos el primer elemento (antes del primer ``,``), strippeando
-    paréntesis decorativos como ``(be-)love(-ed)``.
-
-    Si la lista está vacía, devolvemos ``""`` — el caller decide qué hacer.
-    """
-    first = kjv_def.split(",", 1)[0].strip()
-    # Quitar artefactos KJV-style: paréntesis y guiones de morfología
-    # (``(be-)love(-ed)`` → ``love``). Simple heuristic — preserva semántica.
-    first = re.sub(r"\([^)]*\)", "", first)
-    first = first.replace("-", "").strip()
-    return first
-
-
 def parse_strongs_greek_file(path: Path) -> Iterator[BriefLexiconEntry]:
     """Itera las entradas del Strong's Greek Dictionary digitalizado.
 
     Filtros silenciosos: entradas sin ``lemma`` o sin Strong's parseable
     (no debería ocurrir en el archivo real, pero protege contra ediciones
-    upstream corruptas).
+    upstream corruptas). Entradas sin ``strongs_def`` (definición larga)
+    tampoco se emiten — sin ese campo la card no aporta nada que
+    STEPBible/BDB no cubran ya.
     """
     raw = path.read_text(encoding="utf-8")
     m = _JS_WRAPPER_RE.search(raw)
@@ -88,18 +79,14 @@ def parse_strongs_greek_file(path: Path) -> Iterator[BriefLexiconEntry]:
         if not lemma:
             continue
 
-        kjv_def = (fields.get("kjv_def") or "").strip()
         strongs_def = (fields.get("strongs_def") or "").strip()
-        # ``strongs_def`` upstream casi siempre arranca con un espacio (`" to love..."`);
-        # ya quedó stripped arriba pero por las dudas.
+        if not strongs_def:
+            # Sin definición larga la card de Strong's queda sin contenido
+            # útil (no llevamos gloss_brief desde Strong's — ver módulo
+            # docstring). Skip silencioso.
+            continue
         derivation = (fields.get("derivation") or "").strip()
         translit = (fields.get("translit") or "").strip() or None
-
-        gloss = _extract_first_gloss(kjv_def) if kjv_def else ""
-        if not gloss:
-            # Sin glosa breve aprovechable, salteamos. ~5 casos en el archivo
-            # real (palabras técnicas sin equivalente KJV).
-            continue
 
         # ``definition_full`` agrega derivation entre paréntesis al strongs_def,
         # porque la etimología enriquece el análisis bereano sin ocupar campo
@@ -107,7 +94,7 @@ def parse_strongs_greek_file(path: Path) -> Iterator[BriefLexiconEntry]:
         if derivation:
             definition_full = f"{strongs_def} ({derivation})".strip()
         else:
-            definition_full = strongs_def or None
+            definition_full = strongs_def
 
         yield BriefLexiconEntry(
             strong_base=base,
@@ -115,7 +102,7 @@ def parse_strongs_greek_file(path: Path) -> Iterator[BriefLexiconEntry]:
             lemma=lemma,
             transliteration=translit,
             morph=None,  # Strong's original no incluye morfología
-            gloss_brief=gloss,
+            gloss_brief=None,
             definition_full=definition_full,
             language="grc",
             source="strongs",
