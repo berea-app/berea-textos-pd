@@ -91,10 +91,9 @@ def parse_strongs_greek_file(path: Path) -> Iterator[BriefLexiconEntry]:
         # ``definition_full`` agrega derivation entre paréntesis al strongs_def,
         # porque la etimología enriquece el análisis bereano sin ocupar campo
         # separado en SQLite.
-        if derivation:
-            definition_full = f"{strongs_def} ({derivation})".strip()
-        else:
-            definition_full = strongs_def
+        definition_full = (
+            f"{strongs_def} ({derivation})".strip() if derivation else strongs_def
+        )
 
         yield BriefLexiconEntry(
             strong_base=base,
