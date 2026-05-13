@@ -75,6 +75,9 @@ class TestParserBasico:
         assert _nfc(w.word_original) == _nfc("בָּרָ֣א")
         assert w.transliteration == "ba.Ra'"
         assert w.gloss == "he created"
+        # strong_extended sin padding (forma canónica del léxico). El TSV
+        # trae el código tal cual STEPBible (H1254A); el parser lo
+        # normaliza a la forma sin padding.
         assert w.strong_extended == "H1254A"
         assert w.morph == "HVqp3ms"
         assert _nfc(w.lemma) == _nfc("בָּרָא")
@@ -98,7 +101,8 @@ class TestParserBasico:
         assert _nfc(w.lemma) == _nfc("רֵאשִׁית")
 
     def test_instance_marker_se_strippea_del_strong(self, tmp_path):
-        """``H0853_A`` (instance marker) → ``H0853``."""
+        """``H0853_A`` (instance marker) → ``H853``. Strippea el Instance
+        marker y normaliza el padding al formato del léxico."""
         row = _row(
             "Gen.1.1#04=L",
             "אֵ֥ת", "'et", "<obj.>", "{H0853}", "HTo", "", "",
@@ -107,7 +111,7 @@ class TestParserBasico:
         )
         paths = _write_fixture(tmp_path, [row])
         w = next(iter(parse_tahot_alignment(paths)))
-        assert w.strong_extended == "H0853"
+        assert w.strong_extended == "H853"
 
     def test_lemma_glosa_se_extraen_del_expanded_tag(self, tmp_path):
         """Cuando expanded tag tiene formato ``{Hxxx=lemma=: glosa»sub:n_glosa}``,

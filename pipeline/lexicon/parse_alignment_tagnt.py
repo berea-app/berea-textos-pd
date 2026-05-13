@@ -38,6 +38,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .common import (
+    normalize_strong,
     parse_lemma_gloss,
     parse_strong_morph,
     parse_tagnt_ref,
@@ -187,7 +188,13 @@ def _parse_row(cols: list[str], edition: str) -> WordAlignment | None:
     morph: str | None = None
     sm = parse_strong_morph(strong_morph_field) if strong_morph_field else None
     if sm is not None:
-        strong_extended, morph = sm
+        # STEPBible emite el Strong's con padding a 4 dígitos (``G0011``).
+        # El léxico lo guarda sin padding (``G11``). Normalizamos acá para
+        # que el lookup del bottom sheet matchee — si no, palabras con
+        # Strong < 1000 (Ἀβραάμ G0011, Βίβλος G0976, …) caerían al banner
+        # "instalá el léxico" aunque esté instalado.
+        _, strong_extended = normalize_strong(sm[0])
+        morph = sm[1]
 
     # Lemma (col 5: ``ἀγαπάω=to love``)
     lemma: str | None = None

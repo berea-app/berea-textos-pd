@@ -12,8 +12,8 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Alineamiento palabra-a-palabra del NT Textus Receptus (Scrivener 1894, PD) extraído del corpus TAGNT de STEPBible.org / Tyndale House Cambridge. CC BY 4.0; atribución obligatoria.",
-      "sha256": "4f56f385f1c2e210f97fe57d605f75ec4f4e2aaf04111c13c1601bf3b177a914",
-      "size_bytes": 2980746,
+      "sha256": "0c387c03106727a20be2b3cf22ef85baba81adb7aff622982459e210ed4c710b",
+      "size_bytes": 2974427,
       "source": {
         "attribution": "STEPBible.org / Tyndale House Cambridge — usado bajo CC BY 4.0",
         "id": "tagnt",
@@ -35,8 +35,8 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Alineamiento palabra-a-palabra del NT Tregelles (1879, ed. Jongkind 2009) extraído del corpus TAGNT de STEPBible.org / Tyndale House Cambridge. CC BY 4.0; atribución obligatoria.",
-      "sha256": "3ec0850a80a2d21077d1f269a41908e8fcfd238336a9057bd984b4b4f9490dd4",
-      "size_bytes": 2953893,
+      "sha256": "5010159d14a875b989633170d76f7a1fc98046cfdaa057449896582c7376b04f",
+      "size_bytes": 2947685,
       "source": {
         "attribution": "STEPBible.org / Tyndale House Cambridge — usado bajo CC BY 4.0",
         "id": "tagnt",
@@ -58,8 +58,8 @@
       "language": "grc",
       "license": "cc_by_4_0",
       "license_basis": "Alineamiento palabra-a-palabra del NT Westcott-Hort (1881, PD) extraído del corpus TAGNT de STEPBible.org / Tyndale House Cambridge. Distribuido bajo Creative Commons Attribution 4.0; atribución obligatoria.",
-      "sha256": "ee4441c834f879babb2268e521e8000bb5d58e3e72784b46bd93da805ac80c30",
-      "size_bytes": 2952154,
+      "sha256": "89fdc2ac824ccbc787f067b5db7de37178680aa677d928ad1a35fad085b00906",
+      "size_bytes": 2946043,
       "source": {
         "attribution": "STEPBible.org / Tyndale House Cambridge — usado bajo CC BY 4.0",
         "id": "tagnt",
@@ -81,8 +81,8 @@
       "language": "hbo",
       "license": "cc_by_4_0",
       "license_basis": "Alineamiento palabra-a-palabra del AT hebreo Leningrad + Qere (WLC moderno) extraído del corpus TAHOT de STEPBible.org / Tyndale House Cambridge. CC BY 4.0; atribución obligatoria.",
-      "sha256": "da5687f9175a28abb8a1ae4a5e2d6a1fe365877721ca72f37cf7d8792cb6124e",
-      "size_bytes": 7649011,
+      "sha256": "29cf1d414e884b31ce47e19daf569f682758975849b56b533737dba6a1ca1c2b",
+      "size_bytes": 7629841,
       "source": {
         "attribution": "STEPBible.org / Tyndale House Cambridge — usado bajo CC BY 4.0",
         "id": "tahot",
@@ -452,5 +452,5 @@
     "size_bytes": 11388
   },
   "schema_version": "1.3",
-  "updated_at": "2026-05-12T00:00:00-03:00"
+  "updated_at": "2026-05-11T21:00:00-03:00"
 }

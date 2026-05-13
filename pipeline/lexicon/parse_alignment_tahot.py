@@ -43,7 +43,7 @@ import re
 from collections.abc import Iterable, Iterator
 from pathlib import Path
 
-from .common import parse_tagnt_ref
+from .common import normalize_strong, parse_tagnt_ref
 from .parse_alignment_tagnt import WordAlignment
 
 # Tipos de fila TAHOT que conservamos. WLC moderno usa L (Leningrad) y Q
@@ -89,15 +89,19 @@ def _strip_morph_segments(value: str) -> str:
 
 
 def _extract_root_strong(col9: str) -> str | None:
-    """``H7225G`` o ``H0853_A`` → ``H7225G`` / ``H0853``. Strippea Instance
-    markers."""
+    """``H7225G`` o ``H0853_A`` → ``H7225G`` / ``H853``. Strippea el Instance
+    marker y normaliza el padding de ceros a la forma sin padding del léxico
+    (``H0853`` → ``H853``)."""
     s = col9.strip()
     if not s:
         return None
     m = _STRONG_HEAD_RE.match(s)
     if m is None:
         return None
-    return m.group(1)
+    # normalize_strong devuelve (base, extended). Queremos el extended
+    # (preserva sufijos de desambiguación ``G``/``H`` / ``a``/``b``).
+    _, extended = normalize_strong(m.group(1))
+    return extended
 
 
 def _extract_lemma_gloss(col12: str, root_strong: str | None) -> tuple[str | None, str | None]:

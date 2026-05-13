@@ -80,7 +80,9 @@ class TestParserBasico:
         assert _nfc(w.word_original) == _nfc("ἠγάπησεν")
         assert w.transliteration == "ēgapēsen"
         assert w.lemma == "ἀγαπάω"
-        assert w.strong_extended == "G0025"
+        # strong_extended sin padding (forma canónica del léxico). El TSV
+        # de STEPBible trae ``G0025``, el parser lo normaliza a ``G25``.
+        assert w.strong_extended == "G25"
         assert w.morph == "V-AAI-3S"
         assert w.gloss == "loved"
 
@@ -143,7 +145,7 @@ class TestParserBasico:
         assert len(wh) == 1
         assert _nfc(wh[0].word_original) == _nfc("ἁγίων")
         assert wh[0].transliteration == "hagiōn"
-        assert wh[0].strong_extended == "G0040"
+        assert wh[0].strong_extended == "G40"
         assert wh[0].morph == "A-GPM"
         # TR usa la palabra default
         assert len(tr) == 1
@@ -200,7 +202,7 @@ def _make_alignment(**kw) -> WordAlignment:
         word_original="ἠγάπησεν",
         transliteration="ēgapēsen",
         lemma="ἀγαπάω",
-        strong_extended="G0025",
+        strong_extended="G25",
         morph="V-AAI-3S",
         gloss="loved",
     )
@@ -229,7 +231,7 @@ class TestPackerRoundTrip:
         assert a["book_id"] == "jhn"
         assert a["position"] == 3
         assert _nfc(a["word_original"]) == _nfc("ἠγάπησεν")
-        assert a["strong"] == "G0025"
+        assert a["strong"] == "G25"
 
     def test_determinismo_byte_a_byte(self, tmp_path):
         alignments = [
@@ -335,7 +337,7 @@ class TestParserReal:
             )
             assert _nfc(w3.word_original) == _nfc("ἠγάπησεν"), f"{ed}: {w3.word_original!r}"
             assert _nfc(w3.lemma) == _nfc("ἀγαπάω")
-            assert w3.strong_extended == "G0025"
+            assert w3.strong_extended == "G25"
             assert w3.morph == "V-AAI-3S"
             assert w3.gloss == "loved"
 

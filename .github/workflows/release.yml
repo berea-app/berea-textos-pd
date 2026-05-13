@@ -54,6 +54,17 @@ jobs:
                  <(sha256sum "$f"             | awk '{print $1}')
           done
 
+      - name: Regenerate manifest from freshly built .bb
+        # Recomputa sha256 + size_bytes de cada .bb contra los archivos
+        # que el job acaba de buildear. Sin esto, el manifest commiteado
+        # en main quedaba desincronizado con los artifacts (los .bb del
+        # release tienen ``pipeline_commit`` = SHA del tag, distinto al
+        # SHA con el que se commiteó el manifest), forzando un commit de
+        # "chore: sync manifest" después de cada release.
+        env:
+          BEREA_FAKE_NOW: "2026-05-11T21:00:00-03:00"
+        run: python -m pipeline.cli manifest
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
